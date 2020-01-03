@@ -1,0 +1,68 @@
+﻿@model IEnumerable<SISASEPBA.Models.Capacitacion>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="panel panel-default">
+    <div class="panel panel-heading">
+        <strong>Capacitaciones</strong>
+    </div>
+    <div class="panel panel-body">
+        <p>
+            @Html.ActionLink("Ingresar capacitación", "Create", null, new { @class = "btn btn-primary" })
+        </p> <br />
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IdTipoCapacitacion)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NombreCapacitacion)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.EmpresaCapacitadora)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Estado)
+                        </th>
+                        <th>
+                            Acción
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IdTipoCapacitacion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NombreCapacitacion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EmpresaCapacitadora)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Estado)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Editar", "Edit", new { id=item.IdCapacitacionEmpleado }, new { @class = "btn btn-danger"})
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+
+
+            </table>
+
+        </div>
+
+    </div>
+</div>
