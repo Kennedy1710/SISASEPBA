@@ -1,5 +1,7 @@
 ﻿@model SISASEPBA.Models.Usuario
 
+    <link href="~/Content/Switch.css" rel="stylesheet" type="text/css">
+   
 @{
     ViewBag.Title = "Create";
 
@@ -58,10 +60,9 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.EsEmpleado, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            <div class="checkbox">
-                                @Html.EditorFor(model => model.EsEmpleado)
+                                @Html.CheckBoxFor(model => model.EsEmpleado, new { @class = "toggle-switch" })
                                 @Html.ValidationMessageFor(model => model.EsEmpleado, "", new { @class = "text-danger" })
-                            </div>
+                           
                         </div>
                     </div>
 
@@ -95,20 +96,18 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.ContrasenaVence, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
-                            <div class="checkbox">
-                                @Html.EditorFor(model => model.ContrasenaVence)
+                                @Html.CheckBoxFor(model => model.ContrasenaVence, new { @class = "toggle-switch" })
                                 @Html.ValidationMessageFor(model => model.ContrasenaVence, "", new { @class = "text-danger" })
-                            </div>
+                           
                         </div>
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.CambioProximoInicio, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
-                            <div class="checkbox">
-                                @Html.EditorFor(model => model.CambioProximoInicio)
+                                @Html.CheckBoxFor(model => model.CambioProximoInicio, new { @class = "toggle-switch" })
                                 @Html.ValidationMessageFor(model => model.CambioProximoInicio, "", new { @class = "text-danger" })
-                            </div>
+                            
                         </div>
                     </div>
 
