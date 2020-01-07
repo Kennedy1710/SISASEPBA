@@ -18,28 +18,28 @@ namespace SISASEPBA.Models
         public int IdEmpleado { get; set; } = 0;
 
         [DisplayName("Departamento:")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string IdDepartamento { get; set; } = string.Empty;
 
         [DisplayName("Puesto:")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string IdPuesto { get; set; } = string.Empty;
 
         [DisplayName("Nomina:")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string IdNomina { get; set; } = string.Empty;
 
         [DisplayName("Salario de referencia:")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public decimal SalarioReferencia { get; set; } = 0;
 
-        [StringLength(150, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [StringLength(150, MinimumLength = 3, ErrorMessage = "Debe ingresar al menos 3 caracteres.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         [DisplayName("Observaciones de Acción de Personal:")]
         public string ObservacionesAP { get; set; } = string.Empty;
 
         [DisplayName("Fecha en la que rige")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public DateTime FechaRige { get; set; } = DateTime.Now;
 
         public DateTime FechaDeAprobacion { get; set; } = DateTime.Now;

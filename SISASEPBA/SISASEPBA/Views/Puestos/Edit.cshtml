@@ -1,14 +1,14 @@
 ﻿@model SISASEPBA.Models.Puesto
 
-    <link href="~/Content/SwitchEstado.css" rel="stylesheet" type="text/css">
+<link href="~/Content/SwitchEstado.css" rel="stylesheet" type="text/css">
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Editar puesto";
 }
 
 <div class="panel panel-default">
     <div class="panel panel-heading">
-        <strong>Editar</strong>
+        <strong>Editar Puesto</strong>
     </div>
     <div class="panel panel-body">
         @using (Html.BeginForm())
@@ -18,68 +18,71 @@
             <div class="form-horizontal">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
+                <div class="col-md-offset-3 col-md-10">
+                    <div class="form-group">
+                        @Html.HiddenFor(model => model.IdPuesto, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.HiddenFor(model => model.IdPuesto, new { htmlAttributes = new { @class = "form-control" } })
 
-                <div class="form-group">
-                    @Html.HiddenFor(model => model.IdPuesto, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.HiddenFor(model => model.IdPuesto, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
 
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IdDepartamento, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("IdDepartamento", new SelectList(ViewBag.Departamento, "IdDepartamento", "Descripcion"), new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.IdDepartamento, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Alias, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Alias, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Alias, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.CheckBoxFor(model => model.Estado, new { @class = "toggle-switch" })
+                            @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.HiddenFor(model => model.UsuarioCreacion, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.HiddenFor(model => model.UsuarioCreacion, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.HiddenFor(model => model.FechaCreacion, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.HiddenFor(model => model.FechaCreacion, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Guardar cambios" class="btn btn-success" />
+                            @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-danger" })
+                        </div>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.IdDepartamento, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.DropDownList("IdDepartamento", new SelectList(ViewBag.Departamento, "IdDepartamento", "Descripcion"), new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.IdDepartamento, "", new { @class = "text-danger" })
-                    </div>
-                </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Alias, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Alias, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Alias, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.CheckBoxFor(model => model.Estado, new { @class = "toggle-switch" })
-                        @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
-
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.HiddenFor(model => model.UsuarioCreacion, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.HiddenFor(model => model.UsuarioCreacion, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.HiddenFor(model => model.FechaCreacion, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.HiddenFor(model => model.FechaCreacion, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-offset-5 col-md-6">
-                        <input type="submit" value="Guardar cambios" class="btn btn-success" />
-                        @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-danger" })
-                    </div>
-                </div>
             </div>
         }
 

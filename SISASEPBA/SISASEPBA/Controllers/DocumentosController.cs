@@ -31,7 +31,11 @@ namespace SISASEPBA.Controllers
                 IdDocumento = dataRow.Field<int>("IDDOCUMENTO"),
                 IdTipoDocumento = dataRow.Field<int>("IDTIPODOCUMENTO"),
                 TituloDocumento = dataRow.Field<string>("TITULODOCUMENTO"),
-                Descripcion = dataRow.Field<string>("DESCRIPCION")
+                Descripcion = dataRow.Field<string>("DESCRIPCION"),
+                Estado = dataRow.Field<string>("ESTADO"),
+                FechaRige = dataRow.Field<DateTime>("FECHARIGE"),
+                FechaVence = dataRow.Field<DateTime>("FECHAVENCE")
+
             }).ToList();
             return View(usr);
         }

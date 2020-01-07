@@ -37,126 +37,142 @@ namespace SISASEPBA.Models
         public string IdEmpleado { get; set; } = "0";
 
         [DisplayName("Fecha de ingreso: ")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public DateTime FechaRige { get; set; } = DateTime.Now;
 
         [DisplayName("Fecha de salida: ")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public DateTime FechaVence { get; set; } = DateTime.Now;
 
         [DisplayName("Ahorro en la asociación: ")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
+        [RegularExpression(@"([0-9]+)", ErrorMessage = "¡Debe ingresar un número!")]
         public decimal AhorroAsociacion { set; get; } = 0;
 
         [DisplayName("Código del empleado:")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [StringLength(10, MinimumLength = 3, ErrorMessage = "Debe ingresar entre 3 y 10 caracteres.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string CodigoEmpleado { set; get; } = String.Empty;
 
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
         [DisplayName("Primer nombre del empleado:")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [StringLength(30, MinimumLength = 1, ErrorMessage = "Excede el máximo de caracteres permitidos")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string EmpleadoPrimerNombre { set; get; } = string.Empty;
 
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
         [DisplayName("Segundo nombre del empleado:")]
+        [StringLength(30, MinimumLength = 1, ErrorMessage = "Excede el máximo de caracteres permitidos")]
         public string EmpleadoSegundoNombre { set; get; } = string.Empty;
 
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
         [DisplayName("Primer apellido del empleado:")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [StringLength(30, MinimumLength = 1, ErrorMessage = "Excede el máximo de caracteres permitidos")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string EmpleadoPrimerApellido { set; get; } = string.Empty;
 
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
         [DisplayName("Segundo apellido del empleado:")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [StringLength(30, MinimumLength = 1, ErrorMessage = "Excede el máximo de caracteres permitidos")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string EmpleadoSegundoApellido { set; get; } = string.Empty;
 
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
         [DisplayName("Tipo de identificación:")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [StringLength(20, MinimumLength = 3, ErrorMessage = "Debe ingresar al menos 3 caracteres.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string TipoIdentificacion { set; get; } = string.Empty;
 
         [DisplayName("Número de identificación:")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
+        [RegularExpression(@"([0-9]+)", ErrorMessage = "¡Debe ingresar un número!")]
         public int NumeroIdentificacion { set; get; } = 0;
 
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
         [DisplayName("Teléfono principal:")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [StringLength(8, MinimumLength = 8, ErrorMessage = "Número de dígitos incorrecto.")]
+        [DataType(DataType.PhoneNumber)]
+        //[RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Número de teléfono inválido.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string TelefonoPrincipal { set; get; } = string.Empty;
 
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
         [DisplayName("Teléfono secundario:")]
+        [StringLength(8, MinimumLength = 8, ErrorMessage = "Número de dígitos incorrecto.")]
+        [DataType(DataType.PhoneNumber)]
+        //[RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Número de teléfono inválido.")]
         public string TelefonoSecundario { set; get; } = string.Empty;
 
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
         [DisplayName("Teléfono de emergencia:")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [StringLength(8, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
+        [DataType(DataType.PhoneNumber)]
+        //[RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Número de teléfono inválido.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string TelefonoEmergencia { set; get; } = string.Empty;
 
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
         [DisplayName("Contacto de emergencia:")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [StringLength(30, MinimumLength = 1, ErrorMessage = "Excede el máximo de caracteres permitidos")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string ContactoEmergencia { set; get; } = string.Empty;
 
-        //[StringLength(3, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
         [DisplayName("Tipo de sangre:")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [StringLength(3, MinimumLength = 1, ErrorMessage = "Excede el máximo de caracteres permitidos")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string TipoSangre { set; get; } = string.Empty;
 
         [DisplayName("Fecha de nacimiento:")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public DateTime FechaNacimiento { set; get; } = DateTime.Now;
 
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
+        [StringLength(150, MinimumLength = 3, ErrorMessage = "Debe ingresar al menos 3 caracteres.")]
         [DisplayName("Dirección de domicilio:")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string DireccionDomicilio { set; get; } = string.Empty;
 
-        [StringLength(15, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
+        [StringLength(2, MinimumLength = 1, ErrorMessage = "Ejemplo de formato: M/F o MA/FE ")]
         [DisplayName("Sexo:")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string Sexo { set; get; } = string.Empty;
 
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
+        [StringLength(20, MinimumLength = 3, ErrorMessage = "Debe ingresar al menos 3 caracteres.")]
         [DisplayName("Estado civil:")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string EstadoCivil { get; set; } = string.Empty;
 
         [DisplayName("Estado:")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string Estado { get; set; } = string.Empty;
 
         public string SubEstado { set; get; } = string.Empty;
 
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
         [DisplayName("Correo electrónico:")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [EmailAddress(ErrorMessage = "¡Dirección de correo inválida!")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string CorreoElectronico { set; get; } = string.Empty;
 
         [DisplayName("Conyugue dependiente:")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public bool ConyugeDependiente { set; get; } = false;
 
         [DisplayName("Hijos dependientes:")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
+        [RegularExpression(@"([0-9]+)", ErrorMessage = "¡Debe ingresar un número!")]
         public int HijosDependientes { set; get; } = 0;
 
         [DisplayName("Número de asegurado:")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [StringLength(15, MinimumLength = 1, ErrorMessage = "Excede el máximo de caracteres permitidos")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string NumeroAsegurado { set; get; } = string.Empty;
 
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
         [DisplayName("Salario referencia:")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
+        [RegularExpression(@"([0-9]+)", ErrorMessage = "¡Debe ingresar un número!")]
         public int SalarioReferencia { set; get; } = 0;
 
         public byte[] Foto { set; get; } = null;
 
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
+        [StringLength(150, MinimumLength = 3, ErrorMessage = "Debe ingresar al menos 3 caracteres.")]
         [DisplayName("Observaciones generales:")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string ObservacionesGenerales { set; get; } = string.Empty;
 
-        [StringLength(150, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
+        [StringLength(150, MinimumLength = 3, ErrorMessage = "Debe ingresar al menos 3 caracteres.")]
         [DisplayName("Observaciones de acción de personal:")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string ObservacionesAP { get; set; } = string.Empty;
 
         public DateTime FechaDeAprobacion { get; set; } = DateTime.Now;

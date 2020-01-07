@@ -13,66 +13,66 @@ namespace SISASEPBA.Models
 
         public int IdConcepto { get; set; } = 0;
 
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string Concepto { get; set; } = string.Empty;
 
-        [DisplayName("Tipo de concepto")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Tipo de concepto:")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string TipoConcepto { get; set; } = string.Empty;
 
-        [DisplayName("Descripción")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Descripción:")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string Descripcion { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string Unidad { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
 
         public bool Salarial { get; set; } = false;
 
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
 
         public bool Fijo { get; set; } = false;
 
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
 
         public bool Liquidable { get; set; } = false;
 
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
 
         public bool Excluyente { get; set; } = false;
 
-        [DisplayName("Cantidad editable")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Cantidad editable:")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public bool CantidadEditable { get; set; } = false;
 
-        [DisplayName("Monto editable")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Monto editable:")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public bool MontoEditable { get; set; } = false;
 
-        [DisplayName("Usa cantidad")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Usa cantidad:")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public bool UsaCantidad { get; set; } = false;
 
-        [DisplayName("Usa monto")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Usa monto:")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public bool UsaMonto { get; set; } = false;
 
-        [DisplayName("Fórmula definida")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Fórmula definida:")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public bool FormulaDefinida { get; set; } = false;
 
-        [DisplayName("Imprimir comprobante")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Imprimir comprobante:")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public bool ImprimeComprobante { get; set; } = false;
 
-        [DisplayName("Imprimir acumulado")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Imprimir acumulado:")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public bool ImprimeAcumulado { get; set; } = false;
 
-        [DisplayName("Factor redondeo")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Factor redondeo:")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public decimal FactorRedondeo { get; set; } = 0;
 
         public string UsuarioCreacion { get; set; } = string.Empty;

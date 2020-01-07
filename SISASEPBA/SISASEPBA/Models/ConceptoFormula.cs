@@ -16,31 +16,31 @@ namespace SISASEPBA.Models
         public int IdConcepto { get; set; } = 0;
 
 
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public int Secuencia { get; set; } = 0;
 
-        [DisplayName("Valor inicial")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Valor inicial:")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public int ValorInicial { get; set; } = 0;
 
-        [DisplayName("Valor final")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Valor final:")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public int ValorFinal { get; set; } = 0;
 
-        [DisplayName("Cantidad de monto")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Cantidad de monto:")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public int CantidadMonto { get; set; } = 0;
 
-        [DisplayName("Nivel de formula")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Nivel de formula:")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public int NivelFormula { get; set; } = 0;
 
-        [DisplayName("Usa cantidad")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Usa cantidad:")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public bool UsaCantidad { get; set; } = false;
 
-        [DisplayName("Usa monto")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Usa monto:")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public bool UsaMonto { get; set; } = false;
 
         public string UsuarioCreacion { get; set; } = string.Empty;

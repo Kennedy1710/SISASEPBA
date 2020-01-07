@@ -15,22 +15,22 @@ namespace SISASEPBA.Models
 
         public int IdPuesto { get; set; } = 0; 
 
-        [DisplayName("Departamento")]
-        [Required(ErrorMessage ="*Campo requerido.")]
+        [DisplayName("Departamento:")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string IdDepartamento { get; set; } = "0";
 
-        [DisplayName("Alias")]
-        [StringLength(6, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Alias:")]
+        [StringLength(6, MinimumLength = 3, ErrorMessage = "Debe ingresar entre 3 y 6 caracteres.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string Alias { get; set; } = string.Empty;
 
-        [DisplayName("Descripción")]
-        [StringLength(150, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Descripción:")]
+        [StringLength(150, MinimumLength = 3, ErrorMessage = "Debe ingresar al menos 3 caracteres.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string Descripcion { get; set; } = string.Empty;
 
-        [DisplayName("Estado")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Estado:")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public bool Estado { get; set; } = false;
 
         public string UsuarioCreacion { get; set; } = string.Empty;

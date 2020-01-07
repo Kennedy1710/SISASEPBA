@@ -50,7 +50,14 @@
                                 @Html.DisplayFor(modelItem => item.Empresa)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Estado)
+                                @if (item.Estado == true)
+                                {
+                                    <p style="color: green">ACTIVO</p>
+                                }
+                                else
+                                {
+                                    <p style="color: red">INACTIVO</p>
+                                }
                             </td>
                             <td>
                                 @Html.ActionLink("Editar", "Edit", new { id = item.IdSocio }, new { @class = "btn btn-danger" })

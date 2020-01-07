@@ -17,16 +17,18 @@ namespace SISASEPBA.Models
 
         public int IdEmpleado { get; set; } = 0;
 
-        [StringLength(15, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
-        [Required(ErrorMessage = "*Campo requerido.")]
         [DisplayName("Número de seguro: ")]
+        [StringLength(15, MinimumLength = 3, ErrorMessage = "Debe ingresar entre 3 y 15 caracteres.")]
+        [RegularExpression(@"([0-9]+)", ErrorMessage = "¡Debe ingresar un número!")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string NumeroAsegurado { get; set; } = string.Empty;
         
         [DisplayName("Fecha en la que rige: ")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public DateTime FechaRige { get; set; } = DateTime.Now;
 
-        [StringLength(150, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [StringLength(150, MinimumLength = 3, ErrorMessage = "Debe ingresar al menos 3 caracteres.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         [DisplayName("Observaciones de acción de personal: ")]
         public string ObservacionesAP { get; set; } = string.Empty;
 

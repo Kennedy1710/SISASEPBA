@@ -2,7 +2,9 @@
 
 @{
     ViewBag.Title = "Documentos";
+
 }
+
 
 <div class="panel panel-default">
     <div class="panel panel-heading">
@@ -31,6 +33,15 @@
                         <th>
                             @Html.DisplayNameFor(model => model.Estado)
                         </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FechaRige)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FechaVence)
+                        </th>
+                        <th>
+                            Vigencia
+                        </th>
 
 
                         <th>
@@ -52,20 +63,37 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Descripcion)
                             </td>
+
                             <td>
-                                @{ if (item.FechaVence < DateTime.Now)
+                                @Html.DisplayFor(modelItem => item.Estado)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FechaRige)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FechaVence)
+                            </td>
+                            <td>
+                                @{
+                                    DateTime FechaActual = DateTime.Now;
+
+
+
+                                    if (item.FechaVence < FechaActual)
                                     {
-                                        <p style="color:red">Vencido</p>
+
+                                        <p style="color:red"> @Html.Label("Vencido")</p>
                                     }
-                                    else if (item.FechaVence == DateTime.Now)
+                                    else if (item.FechaVence > FechaActual.AddDays(-30) || item.FechaVence == FechaActual)
                                     {
-                                        <p style="color:yellow">Por vencer</p>
+                                        <p style="color:yellow"> @Html.Label("Por vencer")</p>
 
                                     }
-                                    else if (item.FechaVence >
-                                        DateTime.Now)
+                                    else if (item.FechaVence > FechaActual)
+
                                     {
-                                        <p style="color:forestgreen">Vigente</p>
+                                        <p style="color:forestgreen"> @Html.Label("Vigente")</p>
                                     }
                                 }
 
@@ -89,7 +117,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             //var rowsSelected = [];
-            $('#tablaDocumento').DataTable({
+            $('#tablaConcepto').DataTable({
                 "language": {
                     "sProcessing": "Procesando...",
                     "sLengthMenu": "Mostrar _MENU_ registros",

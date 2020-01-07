@@ -17,20 +17,20 @@ namespace SISASEPBA.Models
         
         public int IdEmpleado { get; set; } = 0;
 
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [Required(ErrorMessage = "¡Debe ingresar al menos 1 días de ausencia!")]
         [DisplayName("Días de ausencia:")]
         public int DiasAP { get; set; }
 
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         [DisplayName("Fecha en la que rige la ausencia:")]
         public DateTime FechaRige { get; set; } = DateTime.Now;
 
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         [DisplayName("Fecha en la que vence la ausencia:")]
         public DateTime FechaVence { get; set; } = DateTime.Now;
 
-        [StringLength(150, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [StringLength(150, MinimumLength = 3, ErrorMessage = "Debe ingresar al menos 3 caracteres.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         [DisplayName("Observaciones de Acción de Personal:")]
         public string ObservacionesAP { get; set; } = string.Empty;
         

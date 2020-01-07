@@ -16,20 +16,27 @@ namespace SISASEPBA.Models
         public int IdEmpleado { get; set; } = 0;
 
         [DisplayName("Primer nombre:")]
+        [StringLength(30, MinimumLength = 1, ErrorMessage = "¡Excede el máximo de caracteres permitidos!")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string EmpleadoPrimerNombre { get; set; } = string.Empty;
 
         [DisplayName("Segundo nombre:")]
+        [StringLength(30, MinimumLength = 0, ErrorMessage = "¡Excede el máximo de caracteres permitidos!")]
         public string EmpleadoSegundoNombre { get; set; } = string.Empty;
 
         [DisplayName("Primer apellido:")]
+        [StringLength(30, MinimumLength = 1, ErrorMessage = "¡Excede el máximo de caracteres permitidos!")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string EmpleadoPrimerApellido { get; set; } = string.Empty;
 
         [DisplayName("Segundo apellido:")]
+        [StringLength(30, MinimumLength = 1, ErrorMessage = "¡Excede el máximo de caracteres permitidos!")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string EmpleadoSegundoApellido { get; set; } = string.Empty;
 
-        [StringLength(150, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
+        [StringLength(150, MinimumLength = 3, ErrorMessage = "Debe ingresar al menos 3 caracteres.")]
         [DisplayName("Observaciones de acción de personal:")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string ObservacionesAP { get; set; } = string.Empty;
 
         public DateTime FechaDeAprobacion { get; set; } = DateTime.Now;

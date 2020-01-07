@@ -14,16 +14,17 @@ namespace SISASEPBA.Models
         public int IdConceptoLiquidacion { get; set; } = 0;
         public int IdConcepto { get; set; } = 0;
 
-        [DisplayName("Fecha de liquidación")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Fecha de liquidación:")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         [DataType(DataType.Date)]
         public DateTime FechaLiquidacion { get; set; } = DateTime.Now;
 
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Comentarios:")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string Comentarios { get; set; } = string.Empty;
 
-        [DisplayName("Número de liquidación")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Número de liquidación:")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public int NumeroLiquidacion { get; set; } = 0;
 
         public string UsuarioCreacion { get; set; } = string.Empty;

@@ -12,26 +12,27 @@ namespace SISASEPBA.Models
         public string Accion { get; set; } = string.Empty;
 
 
-        [DisplayName("Carta")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Carta:")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public int IdCarta { get; set; } = 0;
 
 
-        [DisplayName("Socio")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Socio:")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string IdSocio { get; set; } = "0";
 
 
-        [DisplayName("Proveedor")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Proveedor:")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string IdProveedor { get; set; } = "0";
 
-        [DisplayName("Fecha")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Fecha:")]
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public DateTime Fecha { get; set; } = DateTime.Now;
 
-        [DisplayName("Cantidad de impresiones")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Cantidad de impresiones:")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public int CantidadImpresiones { get; set; } = 0;
 
         public string UsuarioCreacion { get; set; } = string.Empty;

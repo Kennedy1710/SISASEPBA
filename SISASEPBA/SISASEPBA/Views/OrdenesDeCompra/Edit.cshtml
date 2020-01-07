@@ -1,12 +1,12 @@
 ﻿@model SISASEPBA.Models.OrdenDeCompra
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Editar órden";
 }
 
 <div class="panel panel-default">
     <div class="panel panel-heading">
-        <strong>Editar</strong>
+        <strong>Editar Órden de Compra</strong>
     </div>
     <div class="panel panel-body">
         @using (Html.BeginForm())
@@ -81,6 +81,8 @@
 
                 <div class="form-group">
                     <div class="col-md-offset-4 col-md-6">
+                        <br />
+                        <br />
                         <input type="submit" value="Guardar cambios" class="btn btn-success" />
                         @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-danger" })
                     </div>

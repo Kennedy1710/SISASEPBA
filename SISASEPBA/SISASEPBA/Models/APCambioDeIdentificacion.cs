@@ -21,16 +21,17 @@ namespace SISASEPBA.Models
         [DisplayName("Nacionalidad: ")]
         public string IdNacionalidad { get; set; } = string.Empty;
 
-        [StringLength(150, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
+        [StringLength(150, MinimumLength = 3, ErrorMessage = "Debe ingresar al menos 3 caracteres.")]
         [Required(ErrorMessage = "*Campo requerido.")]
         [DisplayName("Tipo de identificación: ")]
         public string TipoIdentificacion { get; set; } = string.Empty;
 
         [DisplayName("Número de identificación: ")]
+        [RegularExpression(@"([0-9]+)", ErrorMessage = "¡Debe ingresar un número!")]
         public int NumeroIdentificacion { get; set; } = 0;
 
-        [StringLength(150, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [StringLength(150, MinimumLength = 3, ErrorMessage = "Debe ingresar al menos 3 caracteres.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         [DisplayName("Observaciones de acción de personal: ")]
         public string ObservacionesAP { get; set; } = string.Empty;
         

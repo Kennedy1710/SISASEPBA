@@ -16,15 +16,17 @@ namespace SISASEPBA.Models
         public int IdTipoAP { get; set; } = 0;
         
         [DisplayName("Departamento: ")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string IdDepartamento { get; set; } = string.Empty;
         
         public int IdEmpleado { get; set; } = 0;
 
         [DisplayName("Puesto: ")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string IdPuesto { get; set; } = string.Empty;
 
-        [StringLength(150, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [StringLength(150, MinimumLength = 3, ErrorMessage = "Debe ingresar al menos 3 caracteres.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         [DisplayName("Observaciones de acción de personal: ")]
         public string ObservacionesAP { get; set; } = string.Empty;
         

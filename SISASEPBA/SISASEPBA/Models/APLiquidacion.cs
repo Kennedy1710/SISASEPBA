@@ -21,14 +21,16 @@ namespace SISASEPBA.Models
         public bool EstadoDeAP { get; set; } = false;
 
         [DisplayName("Fecha en la que rige: ")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public DateTime FechaRige { get; set; } = DateTime.Now;
 
         [DisplayName("Fecha en la que vence: ")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public DateTime FechaVence { get; set; } = DateTime.Now;
-
-        [StringLength(150, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        
         [DisplayName("Observaciones de acción de personal: ")]
+        [StringLength(150, MinimumLength = 3, ErrorMessage = "Debe ingresar al menos 3 caracteres.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string ObservacionesAP { get; set; } = string.Empty;
         
         public DateTime FechaDeAprobacion { get; set; } = DateTime.Now;
