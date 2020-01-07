@@ -1,0 +1,50 @@
+﻿input[type=checkbox].toggle-switch {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    width: 4em;
+    height: 2em;
+    border-radius: 3em;
+    background-color: #e74c3c;
+    outline: 0;
+    cursor: pointer;
+    transition: background-color 0.09s ease-in-out;
+    position: relative;
+}
+
+    input[type=checkbox].toggle-switch:before {
+        content: 'No';
+        color: #fff;
+        position: absolute;
+        left: 30px;
+        top: 20%;
+    }
+
+    input[type=checkbox].toggle-switch:checked::before {
+        content: 'Sí';
+        color: #fff;
+        position: absolute;
+        left: 10px;
+        top: 20%;
+    }
+
+    input[type=checkbox].toggle-switch:checked {
+        background-color: #2ecc71;
+    }
+
+    input[type=checkbox].toggle-switch::after {
+        content: '';
+        width: 2em;
+        height: 2em;
+        background-color: white;
+        border-radius: 3em;
+        position: absolute;
+        transform: scale(0.7);
+        left: 0;
+        transition: left 0.09s ease-in-out;
+        box-shadow: 0 0.1em rgba(0, 0, 0, 0.5);
+    }
+
+    input[type=checkbox].toggle-switch:checked::after {
+        left: 2em;
+    }

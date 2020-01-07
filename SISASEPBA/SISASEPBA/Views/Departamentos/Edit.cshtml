@@ -1,5 +1,7 @@
 ﻿@model SISASEPBA.Models.Departamento
 
+    <link href="~/Content/SwitchEstado.css" rel="stylesheet" type="text/css">
+
 @{
     ViewBag.Title = "Departamento";
 
@@ -60,10 +62,9 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        <div class="checkbox">
-                            @Html.DropDownListFor(model => model.Estado, listItems, new { @class = "form-control" })
+                            @Html.CheckBoxFor(model => model.Estado, new { @class = "toggle-switch" })
                             @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
-                        </div>
+                       
                     </div>
                 </div>
 
