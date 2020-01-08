@@ -63,6 +63,7 @@ namespace SISASEPBA.Controllers
                     IdTipoAP = dataRow.Field<int>("IDTIPOAP"),
                     Alias = dataRow.Field<string>("ALIAS"),
                     Descripcion = dataRow.Field<string>("DESCRIPCION"),
+                    ControladorAp = dataRow.Field<string>("CONTROLADORAP")
 
                 }).ToList();
 
@@ -125,6 +126,17 @@ namespace SISASEPBA.Controllers
             };
             return PartialView("_Index",model );
 
+        }
+
+        public ActionResult Crear()
+        {
+            var model = new Models.AccionPersonalViewModels
+            {
+                Empleados = Empleados(),
+                TipoAccions = TipoAcciones(),
+                AccionPersonals = AccionPersonals(0, 0, "", "")
+            };
+            return View(model);
         }
         #endregion
 
@@ -387,7 +399,7 @@ namespace SISASEPBA.Controllers
 
             }).FirstOrDefault();
 
-            return View(usr);
+            return View("APCambioDeNombre",usr);
         }
 
         // POST: AccionesDePersonal/Edit/5
@@ -1362,7 +1374,7 @@ namespace SISASEPBA.Controllers
                 var objeto = new AccionDePersonal
                 {
                     Accion = "APINCAPACIDAD",
-                    IdTipoAP = 2016,
+                    IdTipoAP = 2017,
                     IdEmpleado = accion.IdEmpleado,
                     DiasAP = accion.DiasAP,
                     FechaRige = accion.FechaRige,
@@ -1432,7 +1444,7 @@ namespace SISASEPBA.Controllers
                 var objeto = new AccionDePersonal
                 {
                     Accion = "APINCAPACIDAD",
-                    IdTipoAP = 2017,
+                    IdTipoAP = 2019,
                     IdEmpleado = accion.IdEmpleado,
                     DiasAP = accion.DiasAP,
                     FechaRige = accion.FechaRige,
@@ -1502,7 +1514,7 @@ namespace SISASEPBA.Controllers
                 var objeto = new AccionDePersonal
                 {
                     Accion = "APINCAPACIDAD",
-                    IdTipoAP = 2019,
+                    IdTipoAP = 2016,
                     IdEmpleado = accion.IdEmpleado,
                     DiasAP = accion.DiasAP,
                     FechaRige = accion.FechaRige,
@@ -1927,7 +1939,7 @@ namespace SISASEPBA.Controllers
                 var objeto = new AccionDePersonal
                 {
                     Accion = "APPERMISOSCONYSINGOCEDESALARIO",
-                    IdTipoAP = 2020,
+                    IdTipoAP = 2033,
                     IdEmpleado = accion.IdEmpleado,
                     DiasAP = accion.DiasAP,
                     FechaRige = accion.FechaRige,
@@ -1997,7 +2009,7 @@ namespace SISASEPBA.Controllers
                 var objeto = new AccionDePersonal
                 {
                     Accion = "APPERMISOSCONYSINGOCEDESALARIO",
-                    IdTipoAP = 2022,
+                    IdTipoAP = 2034,
                     IdEmpleado = accion.IdEmpleado,
                     DiasAP = accion.DiasAP,
                     FechaRige = accion.FechaRige,
@@ -2067,7 +2079,7 @@ namespace SISASEPBA.Controllers
                 var objeto = new AccionDePersonal
                 {
                     Accion = "APPERMISOSCONYSINGOCEDESALARIO",
-                    IdTipoAP = 2023,
+                    IdTipoAP = 2035,
                     IdEmpleado = accion.IdEmpleado,
                     DiasAP = accion.DiasAP,
                     FechaRige = accion.FechaRige,
@@ -2138,7 +2150,7 @@ namespace SISASEPBA.Controllers
                 var objeto = new AccionDePersonal
                 {
                     Accion = "APVACACIONESDISFRUTADASYACUMULADAS",
-                    IdTipoAP = 2024,
+                    IdTipoAP = 2036,
                     IdEmpleado = accion.IdEmpleado,
                     DiasAP = accion.DiasAP,
                     SaldoVacaciones = accion.SaldoVacaciones,
@@ -2210,7 +2222,7 @@ namespace SISASEPBA.Controllers
                 var objeto = new AccionDePersonal
                 {
                     Accion = "APVACACIONESDISFRUTADASYACUMULADAS",
-                    IdTipoAP = 2026,
+                    IdTipoAP = 2037,
                     IdEmpleado = accion.IdEmpleado,
                     DiasAP = accion.DiasAP,
                     SaldoVacaciones = accion.SaldoVacaciones,

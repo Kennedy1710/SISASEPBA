@@ -1,0 +1,101 @@
+﻿@model SISASEPBA.Models.AccionPersonalViewModels
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="panel panel-default">
+    <div class="panel panel-heading">
+        <strong>Acción de Personal</strong>
+    </div>
+    <div class="panel panel-body">
+        <div class="form-horizontal">
+            <div class="row">
+                <div class="col-lg-offset-3 col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4">Empleado:</label>
+                        <div class="col-md-8">
+                            <select id="listaEmpleados" class="form-control">
+                                @foreach (var item in Model.Empleados)
+                                {
+                                    <option value="@item.IdEmpleado">@item.NombreCompleto</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-3 col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4">Acción a Aplicar</label>
+                        <div class="col-md-8">
+                            <select id="listaTipoAccion" class="form-control">
+                                @foreach (var item in Model.TipoAccions)
+                                {
+                                    <option value="@item.ControladorAp">@item.Descripcion</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <button class="btn btn-success" onclick="Procesar();">Procesar</button>
+                        @*@Html.ActionLink("Procesar", "Crear", "AccionesDePersonal", new {id=@lis }, new { @class = "btn btn-primary" })*@
+                    </div>
+                </div>
+                <hr />
+
+            </div>
+
+        </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <link href="~/Content/css/select2.min.css" rel="stylesheet" />
+    <script src="~/Scripts/select2.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#listaEmpleados").select2();
+            $("#listaTipoAccion").select2();
+        });
+        function Procesar() {
+            $("#listaTipoAccion").val()
+
+            //$('.lnkLogin').on('click', function(){
+            var url = '@Url.Action("CONTROLADOR", "AccionesDePersonal", new { id = "----" })';
+            url =  url.replace("----", $('#listaEmpleados').val());
+            url = url.replace("CONTROLADOR", $('#listaTipoAccion').val());
+            console.log(url);
+    window.location = url;
+//});
+            
+            @*console.log("HOLA");
+            var accion = '@Url.Action("APCambioDeNombre", "AccionesDePersonal")';
+            var empleado = $("#listaEmpleados").val();
+
+            console.log(accion,empleado)
+            $.ajax({
+                    url: '@Url.Action("APCambioDeNombre", "AccionesDePersonal")',
+                    type: "GET",
+                data: {
+                    id: empleado,
+                    //idAccion: $("#listaTipoAccion").val(),
+                    //desde: $("#fechaDesde").val(),
+                    //hasta: $("#fechaHasta").val()
+                },
+                success: function (obj) {
+                        //$("#divtable").html(obj);
+                    },
+                    error: function(result) {
+                        console.log(result);
+                    }
+                });*@
+        }
+    </script>
+}
+

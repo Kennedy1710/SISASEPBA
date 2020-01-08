@@ -20,5 +20,7 @@ namespace SISASEPBA.Models
         public DateTime FechaModificacion { get; set; } = DateTime.Now;
 
         public string UsuarioModificacion { get; set; } = string.Empty;
+
+        public string ControladorAp { get; set; } = string.Empty;
     }
 }
