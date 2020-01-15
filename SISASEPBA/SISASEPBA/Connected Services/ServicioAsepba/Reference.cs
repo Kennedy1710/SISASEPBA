@@ -365,6 +365,20 @@ namespace SISASEPBA.ServicioAsepba {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceAsepba/ConsultarOrdenCompra", ReplyAction="http://tempuri.org/IServiceAsepba/ConsultarOrdenCompraResponse")]
         System.Threading.Tasks.Task<System.Data.DataSet> ConsultarOrdenCompraAsync(SISASEPBA.ServicioAsepba.OrdenCompra obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceAsepba/ProcesarPrivilegio", ReplyAction="http://tempuri.org/IServiceAsepba/ProcesarPrivilegioResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        SISASEPBA.ServicioAsepba.Response ProcesarPrivilegio(SISASEPBA.ServicioAsepba.Privilegio obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceAsepba/ProcesarPrivilegio", ReplyAction="http://tempuri.org/IServiceAsepba/ProcesarPrivilegioResponse")]
+        System.Threading.Tasks.Task<SISASEPBA.ServicioAsepba.Response> ProcesarPrivilegioAsync(SISASEPBA.ServicioAsepba.Privilegio obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceAsepba/ConsultarPrivilegio", ReplyAction="http://tempuri.org/IServiceAsepba/ConsultarPrivilegioResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet ConsultarPrivilegio(SISASEPBA.ServicioAsepba.Privilegio obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceAsepba/ConsultarPrivilegio", ReplyAction="http://tempuri.org/IServiceAsepba/ConsultarPrivilegioResponse")]
+        System.Threading.Tasks.Task<System.Data.DataSet> ConsultarPrivilegioAsync(SISASEPBA.ServicioAsepba.Privilegio obj);
     }
     
     /// <remarks/>
@@ -568,6 +582,108 @@ namespace SISASEPBA.ServicioAsepba {
             set {
                 this.usuarioSesionField = value;
                 this.RaisePropertyChanged("UsuarioSesion");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Privilegio : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string accionField;
+        
+        private int idPrivilegioField;
+        
+        private string aliasField;
+        
+        private string descripcionField;
+        
+        private string nombreConstanteField;
+        
+        private bool estadoField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string Accion {
+            get {
+                return this.accionField;
+            }
+            set {
+                this.accionField = value;
+                this.RaisePropertyChanged("Accion");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public int IdPrivilegio {
+            get {
+                return this.idPrivilegioField;
+            }
+            set {
+                this.idPrivilegioField = value;
+                this.RaisePropertyChanged("IdPrivilegio");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string Alias {
+            get {
+                return this.aliasField;
+            }
+            set {
+                this.aliasField = value;
+                this.RaisePropertyChanged("Alias");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string Descripcion {
+            get {
+                return this.descripcionField;
+            }
+            set {
+                this.descripcionField = value;
+                this.RaisePropertyChanged("Descripcion");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string NombreConstante {
+            get {
+                return this.nombreConstanteField;
+            }
+            set {
+                this.nombreConstanteField = value;
+                this.RaisePropertyChanged("NombreConstante");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public bool Estado {
+            get {
+                return this.estadoField;
+            }
+            set {
+                this.estadoField = value;
+                this.RaisePropertyChanged("Estado");
             }
         }
         
@@ -7288,6 +7404,22 @@ namespace SISASEPBA.ServicioAsepba {
         
         public System.Threading.Tasks.Task<System.Data.DataSet> ConsultarOrdenCompraAsync(SISASEPBA.ServicioAsepba.OrdenCompra obj) {
             return base.Channel.ConsultarOrdenCompraAsync(obj);
+        }
+        
+        public SISASEPBA.ServicioAsepba.Response ProcesarPrivilegio(SISASEPBA.ServicioAsepba.Privilegio obj) {
+            return base.Channel.ProcesarPrivilegio(obj);
+        }
+        
+        public System.Threading.Tasks.Task<SISASEPBA.ServicioAsepba.Response> ProcesarPrivilegioAsync(SISASEPBA.ServicioAsepba.Privilegio obj) {
+            return base.Channel.ProcesarPrivilegioAsync(obj);
+        }
+        
+        public System.Data.DataSet ConsultarPrivilegio(SISASEPBA.ServicioAsepba.Privilegio obj) {
+            return base.Channel.ConsultarPrivilegio(obj);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> ConsultarPrivilegioAsync(SISASEPBA.ServicioAsepba.Privilegio obj) {
+            return base.Channel.ConsultarPrivilegioAsync(obj);
         }
     }
 }

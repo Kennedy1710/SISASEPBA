@@ -224,6 +224,14 @@ namespace SISASEPBAWs
         [OperationContract]
         [TransactionFlow(TransactionFlowOption.Allowed)]
         DataSet ConsultarOrdenCompra(OrdenCompra obj);
+
+        [OperationContract]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
+        Response ProcesarPrivilegio(Privilegio obj);
+
+        [OperationContract]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
+        DataSet ConsultarPrivilegio(Privilegio obj);
     }
 
 
@@ -1453,5 +1461,26 @@ namespace SISASEPBAWs
         public DateTime FechaModificacion { get; set; } = DateTime.Now;
     }
 
+    public class Privilegio
+    {
+        [DataMember]
+        public string Accion { get; set; } = string.Empty;
+
+        [DataMember]
+        public int IdPrivilegio { get; set; } = 0;
+
+        [DataMember]
+        public string Alias { get; set; } = string.Empty;
+
+        [DataMember]
+        public string Descripcion { get; set; } = string.Empty;
+
+        [DataMember]
+        public string NombreConstante { get; set; } = string.Empty;
+
+        [DataMember]
+        public bool Estado { get; set; } = false;
+
+    }
 
 }

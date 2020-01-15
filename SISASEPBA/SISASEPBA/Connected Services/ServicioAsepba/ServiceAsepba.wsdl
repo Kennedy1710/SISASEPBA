@@ -305,6 +305,18 @@
   <wsdl:message name="IServiceAsepba_ConsultarOrdenCompra_OutputMessage">
     <wsdl:part name="parameters" element="tns:ConsultarOrdenCompraResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceAsepba_ProcesarPrivilegio_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProcesarPrivilegio" />
+  </wsdl:message>
+  <wsdl:message name="IServiceAsepba_ProcesarPrivilegio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProcesarPrivilegioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceAsepba_ConsultarPrivilegio_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarPrivilegio" />
+  </wsdl:message>
+  <wsdl:message name="IServiceAsepba_ConsultarPrivilegio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarPrivilegioResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServiceAsepba">
     <wsdl:operation name="ProcesarUsuarios">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceAsepba/ProcesarUsuarios" message="tns:IServiceAsepba_ProcesarUsuarios_InputMessage" />
@@ -505,6 +517,14 @@
     <wsdl:operation name="ConsultarOrdenCompra">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceAsepba/ConsultarOrdenCompra" message="tns:IServiceAsepba_ConsultarOrdenCompra_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceAsepba/ConsultarOrdenCompraResponse" message="tns:IServiceAsepba_ConsultarOrdenCompra_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcesarPrivilegio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceAsepba/ProcesarPrivilegio" message="tns:IServiceAsepba_ProcesarPrivilegio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceAsepba/ProcesarPrivilegioResponse" message="tns:IServiceAsepba_ProcesarPrivilegio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarPrivilegio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceAsepba/ConsultarPrivilegio" message="tns:IServiceAsepba_ConsultarPrivilegio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceAsepba/ConsultarPrivilegioResponse" message="tns:IServiceAsepba_ConsultarPrivilegio_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServiceAsepba" type="tns:IServiceAsepba">
@@ -952,6 +972,24 @@
     </wsdl:operation>
     <wsdl:operation name="ConsultarOrdenCompra">
       <soap:operation soapAction="http://tempuri.org/IServiceAsepba/ConsultarOrdenCompra" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcesarPrivilegio">
+      <soap:operation soapAction="http://tempuri.org/IServiceAsepba/ProcesarPrivilegio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarPrivilegio">
+      <soap:operation soapAction="http://tempuri.org/IServiceAsepba/ConsultarPrivilegio" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

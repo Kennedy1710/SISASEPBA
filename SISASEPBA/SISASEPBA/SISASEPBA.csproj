@@ -193,6 +193,7 @@
     <Compile Include="Controllers\NominasController.cs" />
     <Compile Include="Controllers\NominasHistoricoController.cs" />
     <Compile Include="Controllers\OrdenesDeCompraController.cs" />
+    <Compile Include="Controllers\PrivilegiosController.cs" />
     <Compile Include="Controllers\ProveedoresController.cs" />
     <Compile Include="Controllers\PuestosController.cs" />
     <Compile Include="Controllers\SociosController.cs" />
@@ -242,6 +243,7 @@
     <Compile Include="Models\Nomina.cs" />
     <Compile Include="Models\NominasHistorico.cs" />
     <Compile Include="Models\OrdenDeCompra.cs" />
+    <Compile Include="Models\Privilegios.cs" />
     <Compile Include="Models\Proveedor.cs" />
     <Compile Include="Models\Puesto.cs" />
     <Compile Include="Models\Socio.cs" />
@@ -709,6 +711,9 @@
     <Content Include="Views\Socios\Index.cshtml" />
     <Content Include="Views\Capacitaciones\Edit.cshtml" />
     <Content Include="Views\AccionesDePersonal\Crear.cshtml" />
+    <Content Include="Views\Privilegios\Index.cshtml" />
+    <Content Include="Views\Privilegios\Create.cshtml" />
+    <Content Include="Views\Privilegios\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

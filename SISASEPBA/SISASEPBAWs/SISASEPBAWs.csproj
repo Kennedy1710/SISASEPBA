@@ -83,6 +83,7 @@
     <Compile Include="CapaLogica\ClsNominas.cs" />
     <Compile Include="CapaLogica\ClsNominasHistorico.cs" />
     <Compile Include="CapaLogica\ClsOrdenCompra.cs" />
+    <Compile Include="CapaLogica\ClsPrivilegio.cs" />
     <Compile Include="CapaLogica\ClsProveedor.cs" />
     <Compile Include="CapaLogica\ClsPuestos.cs" />
     <Compile Include="CapaLogica\ClsSocio.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="CapaObjetos\ObjNacionalidades.cs" />
     <Compile Include="CapaObjetos\ObjNominasHistorico.cs" />
     <Compile Include="CapaObjetos\ObjOrdenCompra.cs" />
+    <Compile Include="CapaObjetos\ObjPrivilegios.cs" />
     <Compile Include="CapaObjetos\ObjProveedor.cs" />
     <Compile Include="CapaObjetos\ObjPuestos.cs" />
     <Compile Include="CapaObjetos\ObjSocios.cs" />

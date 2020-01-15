@@ -758,6 +758,34 @@ namespace SISASEPBAWs
             }
         }
 
+        [OperationBehavior(TransactionScopeRequired = true, TransactionAutoComplete = true)]
+        public Response ProcesarPrivilegio(Privilegio obj)
+        {
+            try
+            {
+                return ClsPrivilegio.Procesar(obj);
+            }
+            catch (Exception e)
+            {
+                return new Response
+                {
+                    IsSuccess = false
+                };
+            }
+        }
+
+        [OperationBehavior(TransactionScopeRequired = true, TransactionAutoComplete = true)]
+        public DataSet ConsultarPrivilegio(Privilegio obj)
+        {
+            try
+            {
+                return ClsPrivilegio.Consultar(obj);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
 
     }
 }
