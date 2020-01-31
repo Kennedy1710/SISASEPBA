@@ -428,6 +428,7 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\Estilo.css" />
     <Content Include="Content\Switch.css" />
     <Content Include="Content\SwitchEstado.css" />
     <Content Include="favicon.ico" />
