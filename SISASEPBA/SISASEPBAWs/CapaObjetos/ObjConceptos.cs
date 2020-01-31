@@ -13,6 +13,8 @@ namespace SISASEPBAWs.CapaObjetos
 
         public string Concepto { get; set; } = string.Empty;
 
+        public string Formula { get; set; } = string.Empty;
+
         public string TipoConcepto { get; set; } = string.Empty;
 
         public string Descripcion { get; set; } = string.Empty;

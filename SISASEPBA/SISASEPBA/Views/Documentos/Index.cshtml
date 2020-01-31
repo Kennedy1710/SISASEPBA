@@ -5,6 +5,31 @@
 
 }
 
+<style>
+    #p1 {
+        background-color: darkorange;
+        padding-top: 5px;
+        border-radius: 15px;
+        text-align: center;
+        color: whitesmoke
+    }
+
+    #p2 {
+        background-color: red;
+        padding-top: 5px;
+        border-radius: 15px;
+        text-align: center;
+        color: whitesmoke
+    }
+
+    #p3 {
+        background-color: green;
+        padding-top: 5px;
+        border-radius: 15px;
+        text-align: center;
+        color: whitesmoke
+    }
+</style>
 
 <div class="panel panel-default">
     <div class="panel panel-heading">
@@ -65,7 +90,14 @@
                             </td>
 
                             <td>
-                                @Html.DisplayFor(modelItem => item.Estado)
+                                @if (item.Estado == "A")
+                                {
+                                    <p style="color: green">ACTIVO</p>
+                                }
+                                else if(item.Estado == "I")
+                                {
+                                    <p style="color: red">INACTIVO</p>
+                                }
                             </td>
 
                             <td>
@@ -78,22 +110,22 @@
                                 @{
                                     DateTime FechaActual = DateTime.Now;
 
-
-
-                                    if (item.FechaVence < FechaActual)
+                                    if (item.FechaVence.Date < FechaActual.Date)
                                     {
-
-                                        <p style="color:red"> @Html.Label("Vencido")</p>
+                                        <p id="p2"> @Html.Label("Expirado")</p>
                                     }
-                                    else if (item.FechaVence > FechaActual.AddDays(-30) || item.FechaVence == FechaActual)
+                                    else if (item.FechaVence.Date > FechaActual.AddDays(32).Date)
                                     {
-                                        <p style="color:yellow"> @Html.Label("Por vencer")</p>
+                                        <p id="p3"> @Html.Label("Vigente")</p>
 
                                     }
-                                    else if (item.FechaVence > FechaActual)
-
+                                    else if (item.FechaVence.Date == FechaActual.Date)
                                     {
-                                        <p style="color:forestgreen"> @Html.Label("Vigente")</p>
+                                        <p id="p1"> @Html.Label("Por Expirar")</p>
+                                    }
+                                    else
+                                    {
+                                        <p id="p1"> @Html.Label("Por Expirar")</p>
                                     }
                                 }
 
@@ -117,7 +149,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             //var rowsSelected = [];
-            $('#tablaConcepto').DataTable({
+            $('#tablaDocumento').DataTable({
                 "language": {
                     "sProcessing": "Procesando...",
                     "sLengthMenu": "Mostrar _MENU_ registros",

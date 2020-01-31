@@ -1,0 +1,307 @@
+﻿@model SISASEPBA.Models.Grupos
+
+<link href="~/Content/SwitchEstado.css" rel="stylesheet" type="text/css">
+
+@{
+    ViewBag.Title = "Grupos";
+
+    var listItems = new List<SelectListItem>
+{
+        new SelectListItem
+        {
+            Text = "ACTIVO",
+            Value = "true",
+            Selected = true
+        },
+        new SelectListItem
+        {
+            Text = "INACTIVO",
+            Value = "false"
+
+        }
+    };
+}
+
+<div class="panel panel-default">
+    <div class="panel panel-heading">
+        <strong>Editar Grupo</strong>
+    </div>
+    <div class="panel panel-body">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <div class="row">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.HiddenFor(model => model.IdGrupo, new { htmlAttributes = new { @class = "form-control",@id="grupo" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Alias, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Alias, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Alias, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(model => model.Estado, new { @class = "toggle-switch" })
+                                @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Guardar cambios" class="btn btn-success" />
+                            @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-danger" })
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <ul class="nav nav-tabs">
+                            <li><a data-toggle="tab" href="#menu1">Privilegios del Grupo</a></li>
+                            <li><a data-toggle="tab" href="#menu2">Usuarios del Grupo</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="menu1" class="tab-pane fade in">
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-horizontal">
+                                            <div class="form-group" id="divGrupo">
+                                                <label class="control-label col-md-3">Privilegios</label>
+                                                <div class="col-sm-7">
+                                                    <select id="listaPrivilegios" class="form-control">
+                                                        @foreach (var item in Model.Privilegios)
+                                                        {
+                                                            <option value="@item.IdPrivilegio">@item.Descripcion</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="button" class="btn btn-success flotar" id="btnGuardarPrivilegio">
+                                                Agregar <span class="glyphicon glyphicon-plus"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="table-responsive" id="divtableGrupo">
+                                            <table class="table table-striped" id="tableGrupoPrivilegio">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            Grupo
+                                                        </th>
+                                                        <th>
+                                                            Privilegio
+                                                        </th>
+                                                        <th>Acción</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model.GrupoPrivilegios)
+                                                        {
+                                                            <tr>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.Alias)
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.Descripcion)
+                                                                </td>
+                                                                <td>
+                                                                    <button type="button" class="btn btn-danger flotar" onclick="EliminarGrupoPrivilegio(@item.IdPrivilegio,@item.IdGrupo);">
+                                                                        Eliminar <span class="glyphicon glyphicon-trash"></span>
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div id="menu2" class="tab-pane fade">
+                                <br />
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Usuarios</label>
+                                                <div class="col-sm-7">
+                                                    <select id="listaUsuarios" class="form-control">
+                                                        @foreach (var item in Model.Usuarios)
+                                                        {
+                                                            <option value="@item.IdUsuario">@item.Nombre</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="button" id="btnGuardarUsuario" class="btn btn-success">
+                                                Agregar <span class="glyphicon glyphicon-plus"></span>
+                                            </button>
+                                            <br />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div id="divtableGrupoUsuario">
+                                            <table id="tableGrupoUsuario" class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="text-align: center">Grupo</th>
+                                                        <th style="text-align: center">Usuario</th>
+                                                        <th>Accion</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="text-center">
+                                                    @foreach (var item in Model.GrupoUsuarios)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Alias)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Descripcion)
+                                                            </td>
+                                                            <td>
+                                                                <button type="button" class="btn btn-danger flotar" onclick="EliminarGrupoUsuario(@item.IdUsuario,@item.IdGrupo);">
+                                                                    Eliminar <span class="glyphicon glyphicon-trash"></span>
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <link href="~/Content/css/select2.min.css" rel="stylesheet" />
+    <script src="~/Scripts/select2.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#listaUsuarios").select2();
+            $("#listaPrivilegios").select2();
+        });
+
+           $("#btnGuardarPrivilegio").click(function() {
+                var privilegio = $("#listaPrivilegios").val();
+                var grupo = $("#IdGrupo").val();
+                 //console.log(privilegio, grupo);
+                $.ajax({
+                    url: '@Url.Action("GrupoPrivilegio", "Grupos")',
+                    type: "POST",
+                data: { privilegio: privilegio, grupo: grupo },
+                    success: function (obj) {
+                        //console.log(obj);
+                if (obj != null) {
+                $("#divtableGrupo").html(obj);
+                }
+                },
+                error: function(result) {
+                console.log("HA OCURRIDO UN ERROR INESPERADO");
+                }
+                });
+            });
+
+           $("#btnGuardarUsuario").click(function() {
+                var usuario = $("#listaUsuarios").val();
+                var grupo = $("#IdGrupo").val();
+                 console.log(usuario, grupo);
+                $.ajax({
+                    url: '@Url.Action("GrupoUsuarioInsert", "Grupos")',
+                    type: "POST",
+                data: { usuario: usuario, grupo: grupo },
+                    success: function (obj) {
+                        //console.log(obj);
+                if (obj != null) {
+                $("#divtableGrupoUsuario").html(obj);
+                }
+                },
+                error: function(result) {
+                console.log("HA OCURRIDO UN ERROR INESPERADO");
+                }
+                });
+            });
+
+
+        function EliminarGrupoPrivilegio (privilegio,grupo) {
+
+                $.ajax({
+                    url: '@Url.Action("EliminarGrupoPrivilegio", "Grupos")',
+                    type: "POST",
+                data: { privilegio: privilegio, grupo: grupo },
+                    success: function (obj) {
+                        //console.log(obj);
+                if (obj != null) {
+                $("#divtableGrupo").html(obj);
+                }
+                },
+                error: function(result) {
+                console.log("HA OCURRIDO UN ERROR INESPERADO");
+                }
+                });
+        };
+
+         function EliminarGrupoUsuario (usuario,grupo) {
+
+                $.ajax({
+                    url: '@Url.Action("EliminarGrupoUsuarioInsert", "Grupos")',
+                    type: "POST",
+                data: { usuario: usuario, grupo: grupo },
+                    success: function (obj) {
+                        //console.log(obj);
+                if (obj != null) {
+                $("#divtableGrupoUsuario").html(obj);
+                }
+                },
+                error: function(result) {
+                console.log("HA OCURRIDO UN ERROR INESPERADO");
+                }
+                });
+            };
+
+
+
+    </script>
+
+}
+

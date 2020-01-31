@@ -43,68 +43,51 @@
                         <th>
                             @Html.DisplayNameFor(model => model.Estado)
                         </th>
+                        <th>
+                            Acción
+                        </th>
                     </tr>
                 </thead>
 
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CodigoEmpleado)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PrimerNombre)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.SegundoNombre)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PrimerApellido)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.SegundoApellido)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.IdDepartamento)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.IdPuesto)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Estado)
-                            </td>
-                            @*<td>
-                               
-
-                                <div class="dropdown">
-                                    <button data-toggle="dropdown" class="btn btn-danger dropdown-toggle">
-                                        Acción de personal
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li>@Html.ActionLink("Ascender", "APAscenso", "AccionesDePersonal", new { id = item.IdEmpleado }, null)</li>
-                                        <li>@Html.ActionLink("Ausencias", "APAusenciaJustificada", "AccionesDePersonal", new { id = item.IdEmpleado }, null)</li>
-                                        <li>@Html.ActionLink("Cambio de departamento", "APCambioDeDepartamento", "AccionesDePersonal", new { id = item.IdEmpleado }, null)</li>
-                                        <li>@Html.ActionLink("Cambio de identificación", "APCambioDeIdentificacion", "AccionesDePersonal", new { id = item.IdEmpleado }, null)</li>
-                                        <li>@Html.ActionLink("Cambiar nombre", "APCambioDeNombre", "AccionesDePersonal", new { id = item.IdEmpleado }, null)</li>
-                                        <li>@Html.ActionLink("Cambio de nómina", "APCambioDeNomina", "AccionesDePersonal", new { id = item.IdEmpleado }, null)</li>
-                                        <li>@Html.ActionLink("Cambio de número de seguro", "APCambioDeNumeroDeSeguro", "AccionesDePersonal", new { id = item.IdEmpleado }, null)</li>
-                                        <li>@Html.ActionLink("Cambio de puesto", "APCambioDePuesto", "AccionesDePersonal", new { id = item.IdEmpleado }, null)</li>
-                                        <li>@Html.ActionLink("Cambio de régimen vacacional", "APCambioDeRegimenVacacional", "AccionesDePersonal", new { id = item.IdEmpleado }, null)</li>
-                                        <li>@Html.ActionLink("Cambio de salario", "APCambioDeSalario", "AccionesDePersonal", new { id = item.IdEmpleado }, null)</li>
-                                        <li>@Html.ActionLink("Días pagados de más", "APDiasPagadosDeMas", "AccionesDePersonal", new { id = item.IdEmpleado }, null)</li>
-                                        <li>@Html.ActionLink("Incapacidades", "APIncapacidadINS", "AccionesDePersonal", new { id = item.IdEmpleado }, null)</li>
-                                        <li>@Html.ActionLink("Liquidaciones", "APLiquidacionPorAbandono", "AccionesDePersonal", new { id = item.IdEmpleado }, null)</li>
-                                        <li>@Html.ActionLink("Permisos", "APPermisoConGoceDeSalario", "AccionesDePersonal", new { id = item.IdEmpleado }, null)</li>
-                                        <li>@Html.ActionLink("Vacaciones acumuladas", "APVacacionesAcumuladas", "AccionesDePersonal", new { id = item.IdEmpleado }, null)</li>
-                                        <li>@Html.ActionLink("Vacaciones disfrutadas", "APVacacionesDisfrutadas", "AccionesDePersonal", new { id = item.IdEmpleado }, null)</li>
-                                    </ul>
-                                </div>
-
-                            </td>*@
-
-                        </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CodigoEmpleado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PrimerNombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SegundoNombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PrimerApellido)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SegundoApellido)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdDepartamento)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdPuesto)
+                        </td>
+                        <td>
+                            @if (item.Estado == "A")
+                            {
+                                <p style="color: green">ACTIVO</p>
+                            }
+                            else if(item.Estado == "I")
+                            {
+                                <p style="color: red">INACTIVO</p>
+                            }
+                        </td>
+                        <td>
+                            @Html.ActionLink("Detalles", "Details", new { id = item.IdEmpleado }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
 
                     }
                 </tbody>

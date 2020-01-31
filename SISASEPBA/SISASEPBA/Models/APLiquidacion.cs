@@ -22,6 +22,7 @@ namespace SISASEPBA.Models
 
         [DisplayName("Fecha en la que rige: ")]
         [Required(ErrorMessage = "¡Campo requerido!")]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime FechaRige { get; set; } = DateTime.Now;
 
         [DisplayName("Fecha en la que vence: ")]

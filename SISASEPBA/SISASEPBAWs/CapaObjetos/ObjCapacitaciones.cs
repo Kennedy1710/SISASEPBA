@@ -10,7 +10,7 @@ namespace SISASEPBAWs.CapaObjetos
 
         public string Accion { get; set; } = string.Empty;
 
-        public int IdCapacitacionEmpleado { get; set; } = 0;
+        public int IdCapacitacion { get; set; } = 0;
 
         public int IdTipoCapacitacion { get; set; } = 0;
 

@@ -32,7 +32,11 @@
                             <select id="listaTipoAccion" class="form-control">
                                 @foreach (var item in Model.TipoAccions)
                                 {
-                                    <option value="@item.ControladorAp">@item.Descripcion</option>
+                                    if (item.Descripcion != "Contratacion")
+                                    {
+                                        <option value="@item.ControladorAp">@item.Descripcion</option>
+                                    }
+
                                 }
                             </select>
                         </div>

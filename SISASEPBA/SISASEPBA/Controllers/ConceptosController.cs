@@ -26,7 +26,7 @@ namespace SISASEPBA.Controllers
             var usr = dt.Tables[0].AsEnumerable().Select(dataRow => new Models.Conceptos
             {
                 IdConcepto = dataRow.Field<int>("IDCONCEPTO"),
-                Concepto= dataRow.Field<string>("CONCEPTO"),
+                Concepto = dataRow.Field<string>("CONCEPTO"),
                 TipoConcepto = dataRow.Field<string>("TIPOCONCEPTO"),
                 Descripcion = dataRow.Field<string>("DESCRIPCION"),
                 Unidad = dataRow.Field<string>("UNIDAD"),
@@ -51,6 +51,7 @@ namespace SISASEPBA.Controllers
             {
                 IdConceptoFormula = dataRow.Field<int>("IDCONCEPTOFORMULA"),
                 IdConcepto = dataRow.Field<int>("IDCONCEPTO"),
+                Formula = dataRow.Field<string>("FORMULA"),
                 Secuencia = dataRow.Field<int>("SECUENCIA"),
                 ValorInicial = dataRow.Field<int>("VALORINICIAL"),
                 ValorFinal = dataRow.Field<int>("VALORFINAL"),
@@ -85,14 +86,14 @@ namespace SISASEPBA.Controllers
         }
 
         //listar concepto 
-       public List<Models.Conceptos> GetConcepto()
+        public List<Models.Conceptos> GetConcepto()
         {
             var dt = _servicio.ConsultarConcepto(new Conceptos
             {
                 Accion = "CONSULTAR",
                 FechaCreacion = DateTime.Now,
                 FechaModificacion = DateTime.Now
-                
+
 
             });
 
@@ -189,12 +190,13 @@ namespace SISASEPBA.Controllers
                 var objeto = new ConceptoFormula
                 {
                     Accion = "INSERTAR",
-                    IdConcepto=conceptoFormula.IdConcepto,
+                    IdConcepto = conceptoFormula.IdConcepto,
                     Secuencia = conceptoFormula.Secuencia,
-                    ValorInicial=conceptoFormula.ValorInicial,
-                    ValorFinal=conceptoFormula.ValorFinal,
-                    CantidadMonto=conceptoFormula.CantidadMonto,
-                    NivelFormula=conceptoFormula.NivelFormula,
+                    //Formula = conceptoFormula.Formula,
+                    ValorInicial = conceptoFormula.ValorInicial,
+                    ValorFinal = conceptoFormula.ValorFinal,
+                    CantidadMonto = conceptoFormula.CantidadMonto,
+                    NivelFormula = conceptoFormula.NivelFormula,
                     UsaCantidad = conceptoFormula.UsaCantidad,
                     UsaMonto = conceptoFormula.UsaMonto,
                     UsuarioCreacion = User.Identity.Name,
@@ -234,7 +236,7 @@ namespace SISASEPBA.Controllers
             try
             {
                 var objeto = new ConceptoLiquidacion
-                { 
+                {
                     Accion = "INSERTAR",
                     IdConcepto = conceptoLiquidacion.IdConcepto,
                     FechaLiquidacion = conceptoLiquidacion.FechaLiquidacion,
@@ -268,20 +270,20 @@ namespace SISASEPBA.Controllers
         // GET: Conceptos/Edit/5
         public ActionResult Edit(int id)
         {
-           
+
             var dt = _servicio.ConsultarConcepto(new Conceptos
             {
                 Accion = "CONSULTAR_CONCEPTO",
                 IdConcepto = id,
                 FechaCreacion = DateTime.Now,
                 FechaModificacion = DateTime.Now
-                
+
             });
 
             var usr = dt.Tables[0].AsEnumerable().Select(dataRow => new Models.Conceptos
             {
                 IdConcepto = dataRow.Field<int>("IDCONCEPTO"),
-                Concepto= dataRow.Field<string>("CONCEPTO"),
+                Concepto = dataRow.Field<string>("CONCEPTO"),
                 TipoConcepto = dataRow.Field<string>("TIPOCONCEPTO"),
                 Descripcion = dataRow.Field<string>("DESCRIPCION"),
                 Unidad = dataRow.Field<string>("UNIDAD"),
@@ -325,15 +327,15 @@ namespace SISASEPBA.Controllers
                     Salarial = conceptos.Salarial,
                     Fijo = conceptos.Fijo,
                     Liquidable = conceptos.Liquidable,
-                    Excluyente=conceptos.Excluyente,
+                    Excluyente = conceptos.Excluyente,
                     CantidadEditable = conceptos.CantidadEditable,
                     MontoEditable = conceptos.MontoEditable,
                     UsaCantidad = conceptos.UsaCantidad,
                     UsaMonto = conceptos.UsaMonto,
                     FormulaDefinida = conceptos.FormulaDefinida,
-                    ImprimeComprobante= conceptos.ImprimeComprobante,
-                    ImprimeAcumulado= conceptos.ImprimeAcumulado,
-                    FactorRedondeo= conceptos.FactorRedondeo,
+                    ImprimeComprobante = conceptos.ImprimeComprobante,
+                    ImprimeAcumulado = conceptos.ImprimeAcumulado,
+                    FactorRedondeo = conceptos.FactorRedondeo,
                     UsuarioCreacion = conceptos.UsuarioCreacion,
                     FechaCreacion = conceptos.FechaCreacion,
                     UsuarioModificacion = User.Identity.Name,
@@ -382,9 +384,9 @@ namespace SISASEPBA.Controllers
                 ValorFinal = dataRow.Field<int>("VALORFINAL"),
                 CantidadMonto = dataRow.Field<int>("CANTIDADMONTO"),
                 NivelFormula = dataRow.Field<int>("NIVELFORMULA"),
-                UsaCantidad=dataRow.Field<bool>("USACANTIDAD"),
-                UsaMonto=dataRow.Field<bool>("USAMONTO")
-                
+                UsaCantidad = dataRow.Field<bool>("USACANTIDAD"),
+                UsaMonto = dataRow.Field<bool>("USAMONTO")
+
 
             }).FirstOrDefault();
 
@@ -409,9 +411,9 @@ namespace SISASEPBA.Controllers
                     ValorInicial = conceptoF.ValorInicial,
                     ValorFinal = conceptoF.ValorFinal,
                     CantidadMonto = conceptoF.CantidadMonto,
-                    NivelFormula=conceptoF.NivelFormula,
-                    UsaCantidad=conceptoF.UsaCantidad,
-                    UsaMonto=conceptoF.UsaMonto,
+                    NivelFormula = conceptoF.NivelFormula,
+                    UsaCantidad = conceptoF.UsaCantidad,
+                    UsaMonto = conceptoF.UsaMonto,
                     UsuarioCreacion = conceptoF.UsuarioCreacion,
                     FechaCreacion = conceptoF.FechaCreacion,
                     UsuarioModificacion = User.Identity.Name,
@@ -480,10 +482,10 @@ namespace SISASEPBA.Controllers
                 {
                     Accion = "ACTUALIZAR",
 
-                    IdConceptoLiquidacion= conceptoLQ.IdConceptoLiquidacion,
+                    IdConceptoLiquidacion = conceptoLQ.IdConceptoLiquidacion,
                     IdConcepto = conceptoLQ.IdConcepto,
                     FechaLiquidacion = conceptoLQ.FechaLiquidacion,
-                    Comentarios= conceptoLQ.Comentarios,
+                    Comentarios = conceptoLQ.Comentarios,
                     NumeroLiquidacion = conceptoLQ.NumeroLiquidacion,
                     UsuarioCreacion = conceptoLQ.UsuarioCreacion,
                     FechaCreacion = conceptoLQ.FechaCreacion,

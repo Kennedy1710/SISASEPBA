@@ -5,6 +5,7 @@ using System.Web;
 using System.Data;
 using System.Web.Mvc;
 using SISASEPBA.ServicioAsepba;
+using System.IO;
 //using SISASEPBA.Models;
 
 
@@ -53,7 +54,7 @@ namespace SISASEPBA.Controllers
             {
                 var dt = _servicio.ConsultarTipoAccion(new TipoAccion
                 {
-                    Accion = "CONSULTAR",
+                    Accion = "CONSULTAR_TIPOS",
                     FechaCreacion = DateTime.Now,
                     FechaModificacion = DateTime.Now
                 });
@@ -156,7 +157,7 @@ namespace SISASEPBA.Controllers
         {
             var dt = _servicio.ConsultarDepartamentos(new Departamento
             {
-                Accion = "CONSULTAR",
+                Accion = "CONSULTAR_ACTIVOS",
                 FechaCreacion = DateTime.Now,
                 FechaModificacion = DateTime.Now
             });
@@ -199,7 +200,7 @@ namespace SISASEPBA.Controllers
         {
             var dt = _servicio.ConsultarPuestos(new Puesto
             {
-                Accion = "CONSULTAR",
+                Accion = "CONSULTAR_ACTIVOS",
                 FechaCreacion = DateTime.Now,
                 FechaModificacion = DateTime.Now
             });
@@ -220,7 +221,7 @@ namespace SISASEPBA.Controllers
         {
             var dt = _servicio.ConsultarNomina(new Nomina
             {
-                Accion = "CONSULTAR",
+                Accion = "CONSULTAR_ACTIVOS",
                 FechaCreacion = DateTime.Now,
                 FechaModificacion = DateTime.Now
             });
@@ -241,7 +242,7 @@ namespace SISASEPBA.Controllers
         {
             var dt = _servicio.ConsultarControlVacacional(new ControlVacacional
             {
-                Accion = "CONSULTAR",
+                Accion = "CONSULTAR_ACTIVOS",
                 FechaCreacion = DateTime.Now,
                 FechaModificacion = DateTime.Now
             });
@@ -262,7 +263,7 @@ namespace SISASEPBA.Controllers
         {
             var dt = _servicio.ConsultarFormaPago(new FormaPago
             {
-                Accion = "CONSULTAR",
+                Accion = "CONSULTAR_ACTIVOS",
                 FechaCreacion = DateTime.Now,
                 FechaModificacion = DateTime.Now
             });
@@ -285,8 +286,39 @@ namespace SISASEPBA.Controllers
             return View();
         }
 
-        // GET: AccionesDePersonal/Create
-        public ActionResult APContratacion()
+        public List<Models.Empleado> Codigos(string code)
+        {
+            try
+            {
+                var dt = _servicio.ConsultarEmpleado(new Empleado
+                {
+                    Accion = "CPC",
+                    CodigoEmpleado = code,
+                    FechaCreacion = DateTime.Now,
+                    FechaModificacion = DateTime.Now,
+                    FechaNacimiento = DateTime.Now,
+                    FechaIngreso = DateTime.Now,
+                    FechaSalida = DateTime.Now,
+                    UltimoCambioVac = DateTime.Now,
+                });
+
+                var list = dt.Tables[0].AsEnumerable().Select(dataRow => new Models.Empleado
+                {
+                    CodigoEmpleado = dataRow.Field<string>("CODIGOEMPLEADO"),
+
+
+                }).ToList();
+
+                return list;
+            }
+            catch (Exception)
+            {
+                return new List<Models.Empleado>();
+            }
+        }
+
+            // GET: AccionesDePersonal/Create
+            public ActionResult APContratacion()
         {
             ViewBag.Nacionalidad = Nacionalidad();
             ViewBag.Departamento = Departamentos();
@@ -294,6 +326,7 @@ namespace SISASEPBA.Controllers
             ViewBag.Nomina = Nominas();
             ViewBag.ControlVacacional = ControlVacacional();
             ViewBag.FormaPago = FormaPago();
+            //Codigos();
 
             return View();
         }
@@ -303,70 +336,110 @@ namespace SISASEPBA.Controllers
 
         // POST: AccionesDePersonal/Create
         [HttpPost]
-        public ActionResult APContratacion(AccionDePersonal contratacion)
+        public ActionResult APContratacion([Bind(Exclude = "foto")]AccionDePersonal contratacion)
         {
-            var objeto = new AccionDePersonal
+            
+            try
             {
-                Accion = "APCONTRATACION",
-                IdTipoAP = 1,
-                FechaRige = contratacion.FechaRige,
-                FechaVence = contratacion.FechaVence,
-                IdNacionalidad = contratacion.IdNacionalidad,
-                IdDepartamento = contratacion.IdDepartamento,
-                IdPuesto = contratacion.IdPuesto,
-                IdNomina = contratacion.IdNomina,
-                IdFormaPago = contratacion.IdFormaPago,
-                IdRegimenVacacional = contratacion.IdRegimenVacacional,
-                CodigoEmpleado = contratacion.CodigoEmpleado,
-                EmpleadoPrimerNombre = contratacion.EmpleadoPrimerNombre,
-                EmpleadoSegundoNombre = contratacion.EmpleadoSegundoNombre,
-                EmpleadoPrimerApellido = contratacion.EmpleadoPrimerApellido,
-                EmpleadoSegundoApellido = contratacion.EmpleadoSegundoApellido,
-                TipoIdentificacion = contratacion.TipoIdentificacion,
-                NumeroIdentificacion = contratacion.NumeroIdentificacion,
-                FechaNacimiento = contratacion.FechaNacimiento,
-                Sexo = contratacion.Sexo,
-                TipoSangre = contratacion.TipoSangre,
-                NumeroAsegurado = contratacion.NumeroAsegurado,
-                CorreoElectronico = contratacion.CorreoElectronico,
-                DireccionDomicilio = contratacion.DireccionDomicilio,
-                EstadoCivil = contratacion.EstadoCivil,
-                ConyugeDependiente = contratacion.ConyugeDependiente,
-                HijosDependientes = contratacion.HijosDependientes,
-                TelefonoPrincipal = contratacion.TelefonoPrincipal,
-                TelefonoSecundario = contratacion.TelefonoSecundario,
-                TelefonoEmergencia = contratacion.TelefonoEmergencia,
-                ContactoEmergencia = contratacion.ContactoEmergencia,
-                Estado = "ACT",
-                SubEstado = contratacion.SubEstado,
-                AhorroAsociacion = contratacion.AhorroAsociacion,
-                SalarioReferencia = contratacion.SalarioReferencia,
-                Foto = contratacion.Foto,
-                ObservacionesGenerales = contratacion.ObservacionesGenerales,
-                ObservacionesAP = contratacion.ObservacionesAP,
-                UsuarioCreacion = User.Identity.Name,
-                FechaCreacion = DateTime.Now,
-                UsuarioModificacion = User.Identity.Name,
-                FechaModificacion = DateTime.Now,
-                FechaAplicacion = DateTime.Now,
-                FechaAprobacion = DateTime.Now,
-                FechaCancelacion = DateTime.Now,
-                FechaDenegacion = DateTime.Now,
-                UltimoCambioVacacional = DateTime.Now,
-                
-                
-            };
 
-            var dt = _servicio.ProcesarAccionDePersonal(objeto);
+                byte[] imageData = null;
+                if (Request.Files.Count > 0)
+                {
+                    HttpPostedFileBase objFiles = Request.Files["foto"];
 
-            if (dt.IsSuccess)
-            {
-                return RedirectToAction("Index", "Empleados");
+                    using (var binaryReader = new BinaryReader(objFiles.InputStream))
+                    {
+                        imageData = binaryReader.ReadBytes(objFiles.ContentLength);
+                    }
+                }
+
+                //Codigos(contratacion.CodigoEmpleado);
+
+                if (Codigos(contratacion.CodigoEmpleado).Count() > 0)
+                {
+                    ViewBag.Nacionalidad = Nacionalidad();
+                    ViewBag.Departamento = Departamentos();
+                    ViewBag.Puesto = Puestos();
+                    ViewBag.Nomina = Nominas();
+                    ViewBag.ControlVacacional = ControlVacacional();
+                    ViewBag.FormaPago = FormaPago();
+                    ViewBag.Mensaje = "El código de empleado ya existe";
+
+                    return View("APContratacion");
+                }
+                else
+                {
+                    var objeto = new AccionDePersonal
+                    {
+                        Accion = "APCONTRATACION",
+                        IdTipoAP = 0,//1,
+                        FechaRige = contratacion.FechaRige,
+                        FechaVence = DateTime.Now,
+                        IdNacionalidad = contratacion.IdNacionalidad,
+                        //IdEmpleado = contratacion.IdEmpleado,
+                        IdDepartamento = contratacion.IdDepartamento,
+                        IdPuesto = contratacion.IdPuesto,
+                        IdNomina = contratacion.IdNomina,
+                        IdFormaPago = contratacion.IdFormaPago,
+                        IdRegimenVacacional = contratacion.IdRegimenVacacional,
+                        CodigoEmpleado = contratacion.CodigoEmpleado,
+                        EmpleadoPrimerNombre = contratacion.EmpleadoPrimerNombre,
+                        EmpleadoSegundoNombre = contratacion.EmpleadoSegundoNombre,
+                        EmpleadoPrimerApellido = contratacion.EmpleadoPrimerApellido,
+                        EmpleadoSegundoApellido = contratacion.EmpleadoSegundoApellido,
+                        TipoIdentificacion = contratacion.TipoIdentificacion,
+                        NumeroIdentificacion = contratacion.NumeroIdentificacion,
+                        FechaNacimiento = contratacion.FechaNacimiento,
+                        Sexo = contratacion.Sexo,
+                        TipoSangre = contratacion.TipoSangre,
+                        NumeroAsegurado = contratacion.NumeroAsegurado,
+                        CorreoElectronico = contratacion.CorreoElectronico,
+                        DireccionDomicilio = contratacion.DireccionDomicilio,
+                        EstadoCivil = contratacion.EstadoCivil,
+                        ConyugeDependiente = contratacion.ConyugeDependiente,
+                        HijosDependientes = contratacion.HijosDependientes,
+                        TelefonoPrincipal = contratacion.TelefonoPrincipal,
+                        TelefonoSecundario = contratacion.TelefonoSecundario,
+                        TelefonoEmergencia = contratacion.TelefonoEmergencia,
+                        ContactoEmergencia = contratacion.ContactoEmergencia,
+                        Estado = "ACT",
+                        SubEstado = "ACT",
+                        AhorroAsociacion = contratacion.AhorroAsociacion,
+                        SalarioReferencia = contratacion.SalarioReferencia,
+                        Foto = imageData,
+                        ObservacionesGenerales = contratacion.ObservacionesGenerales,
+                        ObservacionesAP = contratacion.ObservacionesAP,
+                        UsuarioCreacion = User.Identity.Name,
+                        FechaCreacion = DateTime.Now,
+                        UsuarioModificacion = User.Identity.Name,
+                        FechaModificacion = DateTime.Now,
+                        FechaAplicacion = DateTime.Now,
+                        FechaAprobacion = DateTime.Now,
+                        FechaCancelacion = DateTime.Now,
+                        FechaDenegacion = DateTime.Now,
+                        UltimoCambioVacacional = DateTime.Now,
+
+                    };
+
+                    var dt = _servicio.ProcesarAccionDePersonal(objeto);
+
+                    if (dt.IsSuccess)
+                    {
+                        return RedirectToAction("Index", "Empleados");
+                    }
+                    else
+                    {
+                        return View("APContratacion");
+                    }
+                }
+                
             }
-            else
+            catch (Exception)
             {
-                return View("Create");
+
+                throw;
             }
+            
         }
 
         // GET: AccionesDePersonal/Edit/5
@@ -411,7 +484,7 @@ namespace SISASEPBA.Controllers
                 var objeto = new AccionDePersonal
                 {
                     Accion = "APCAMBIODENOMBRE",
-                    IdTipoAP = 2002,
+                    IdTipoAP = 0,
                     IdEmpleado = accion.IdEmpleado,
                     EmpleadoPrimerNombre = accion.EmpleadoPrimerNombre,
                     EmpleadoSegundoNombre = accion.EmpleadoSegundoNombre,
@@ -436,11 +509,11 @@ namespace SISASEPBA.Controllers
 
                 if (dt.IsSuccess)
                 {
-                    return RedirectToAction("Index", "Empleados");
+                    return RedirectToAction("Index", "AccionesDePersonal");
                 }
                 else
                 {
-                    return View("Index", "Empleados");
+                    return View("Index", "AccionesDePersonal");
                 }
             }
             catch
@@ -492,7 +565,7 @@ namespace SISASEPBA.Controllers
                 var objeto = new AccionDePersonal
                 {
                     Accion = "APASCENSO",
-                    IdTipoAP = 4,
+                    IdTipoAP = 0,
                     IdEmpleado = accion.IdEmpleado,
                     IdDepartamento = accion.IdDepartamento,
                     IdPuesto = accion.IdPuesto,
@@ -516,14 +589,14 @@ namespace SISASEPBA.Controllers
 
                 if (dt.IsSuccess)
                 {
-                    return RedirectToAction("Index", "Empleados");
+                    return RedirectToAction("Index", "AccionesDePersonal");
                 }
                 else
                 {
-                    return View("Index", "Empleados");
+                    return View("Index", "AccionesDePersonal");
                 }
             }
-            catch
+            catch (Exception e)
             {
                 return View();
             }
@@ -573,25 +646,25 @@ namespace SISASEPBA.Controllers
                     FechaVence = accion.FechaVence,
                     UsuarioCreacion = User.Identity.Name,
                     FechaCreacion = DateTime.Now,
-                    UsuarioModificacion = User.Identity.Name,
-                    FechaModificacion = DateTime.Now,
-                    FechaAprobacion = DateTime.Now,
-                    FechaAplicacion = DateTime.Now,
-                    FechaCancelacion = DateTime.Now,
-                    FechaDenegacion = DateTime.Now,
-                    FechaNacimiento = DateTime.Now,
-                    UltimoCambioVacacional = DateTime.Now
+                    //UsuarioModificacion = User.Identity.Name,
+                    //FechaModificacion = DateTime.Now,
+                    //FechaAprobacion = DateTime.Now,
+                    //FechaAplicacion = DateTime.Now,
+                    //FechaCancelacion = DateTime.Now,
+                    //FechaDenegacion = DateTime.Now,
+                    //FechaNacimiento = DateTime.Now,
+                    //UltimoCambioVacacional = DateTime.Now
                 };
 
                 var dt = _servicio.ProcesarAccionDePersonal(objeto);
 
                 if (dt.IsSuccess)
                 {
-                    return RedirectToAction("Index", "Empleados");
+                    return RedirectToAction("Index", "AccionesDePersonal");
                 }
                 else
                 {
-                    return View("Index", "Empleados");
+                    return View("Index", "AccionesDePersonal");
                 }
             }
             catch
@@ -644,25 +717,25 @@ namespace SISASEPBA.Controllers
                     FechaVence = accion.FechaVence,
                     UsuarioCreacion = User.Identity.Name,
                     FechaCreacion = DateTime.Now,
-                    UsuarioModificacion = User.Identity.Name,
-                    FechaModificacion = DateTime.Now,
-                    FechaAprobacion = DateTime.Now,
-                    FechaAplicacion = DateTime.Now,
-                    FechaCancelacion = DateTime.Now,
-                    FechaDenegacion = DateTime.Now,
-                    FechaNacimiento = DateTime.Now,
-                    UltimoCambioVacacional = DateTime.Now
+                    //UsuarioModificacion = User.Identity.Name,
+                    //FechaModificacion = DateTime.Now,
+                    //FechaAprobacion = DateTime.Now,
+                    //FechaAplicacion = DateTime.Now,
+                    //FechaCancelacion = DateTime.Now,
+                    //FechaDenegacion = DateTime.Now,
+                    //FechaNacimiento = DateTime.Now,
+                    //UltimoCambioVacacional = DateTime.Now
                 };
 
                 var dt = _servicio.ProcesarAccionDePersonal(objeto);
 
                 if (dt.IsSuccess)
                 {
-                    return RedirectToAction("Index", "Empleados");
+                    return RedirectToAction("Index", "AccionesDePersonal");
                 }
                 else
                 {
-                    return View("Index", "Empleados");
+                    return View("Index", "AccionesDePersonal");
                 }
             }
             catch
@@ -734,11 +807,11 @@ namespace SISASEPBA.Controllers
 
                 if (dt.IsSuccess)
                 {
-                    return RedirectToAction("Index", "Empleados");
+                    return RedirectToAction("Index", "AccionesDePersonal");
                 }
                 else
                 {
-                    return View("Index", "Empleados");
+                    return View("Index", "AccionesDePersonal");
                 }
             }
             catch
@@ -811,11 +884,11 @@ namespace SISASEPBA.Controllers
 
                 if (dt.IsSuccess)
                 {
-                    return RedirectToAction("Index", "Empleados");
+                    return RedirectToAction("Index", "AccionesDePersonal");
                 }
                 else
                 {
-                    return View("Index", "Empleados");
+                    return View("Index", "AccionesDePersonal");
                 }
             }
             catch
@@ -884,11 +957,11 @@ namespace SISASEPBA.Controllers
 
                 if (dt.IsSuccess)
                 {
-                    return RedirectToAction("Index", "Empleados");
+                    return RedirectToAction("Index", "AccionesDePersonal");
                 }
                 else
                 {
-                    return View("Index", "Empleados");
+                    return View("Index", "AccionesDePersonal");
                 }
             }
             catch
@@ -957,11 +1030,11 @@ namespace SISASEPBA.Controllers
 
                 if (dt.IsSuccess)
                 {
-                    return RedirectToAction("Index", "Empleados");
+                    return RedirectToAction("Index", "AccionesDePersonal");
                 }
                 else
                 {
-                    return View("Index", "Empleados");
+                    return View("Index", "AccionesDePersonal");
                 }
             }
             catch
@@ -1037,11 +1110,11 @@ namespace SISASEPBA.Controllers
 
                 if (dt.IsSuccess)
                 {
-                    return RedirectToAction("Index", "Empleados");
+                    return RedirectToAction("Index", "AccionesDePersonal");
                 }
                 else
                 {
-                    return View("Index", "Empleados");
+                    return View("Index", "AccionesDePersonal");
                 }
             }
             catch
@@ -1085,7 +1158,7 @@ namespace SISASEPBA.Controllers
             {
                 var objeto = new AccionDePersonal
                 {
-                    Accion = "APCAMBIODEPUESTO",
+                    Accion = "APCAMBIODEPORCENTAJEDEAHORROS",
                     IdTipoAP = 2011,
                     IdEmpleado = accion.IdEmpleado,
                     AhorroAsociacion = accion.AhorroAsociacion,
@@ -1108,11 +1181,11 @@ namespace SISASEPBA.Controllers
 
                 if (dt.IsSuccess)
                 {
-                    return RedirectToAction("Index", "Empleados");
+                    return RedirectToAction("Index", "AccionesDePersonal");
                 }
                 else
                 {
-                    return View("Index", "Empleados");
+                    return View("Index", "AccionesDePersonal");
                 }
             }
             catch
@@ -1182,11 +1255,11 @@ namespace SISASEPBA.Controllers
 
                 if (dt.IsSuccess)
                 {
-                    return RedirectToAction("Index", "Empleados");
+                    return RedirectToAction("Index", "AccionesDePersonal");
                 }
                 else
                 {
-                    return View("Index", "Empleados");
+                    return View("Index", "AccionesDePersonal");
                 }
             }
             catch
@@ -1256,11 +1329,11 @@ namespace SISASEPBA.Controllers
 
                 if (dt.IsSuccess)
                 {
-                    return RedirectToAction("Index", "Empleados");
+                    return RedirectToAction("Index", "AccionesDePersonal");
                 }
                 else
                 {
-                    return View("Index", "Empleados");
+                    return View("Index", "AccionesDePersonal");
                 }
             }
             catch
@@ -1326,11 +1399,11 @@ namespace SISASEPBA.Controllers
 
                 if (dt.IsSuccess)
                 {
-                    return RedirectToAction("Index", "Empleados");
+                    return RedirectToAction("Index", "AccionesDePersonal");
                 }
                 else
                 {
-                    return View("Index", "Empleados");
+                    return View("Index", "AccionesDePersonal");
                 }
             }
             catch
@@ -1396,11 +1469,11 @@ namespace SISASEPBA.Controllers
 
                 if (dt.IsSuccess)
                 {
-                    return RedirectToAction("Index", "Empleados");
+                    return RedirectToAction("Index", "AccionesDePersonal");
                 }
                 else
                 {
-                    return View("Index", "Empleados");
+                    return View("Index", "AccionesDePersonal");
                 }
             }
             catch
@@ -1466,11 +1539,11 @@ namespace SISASEPBA.Controllers
 
                 if (dt.IsSuccess)
                 {
-                    return RedirectToAction("Index", "Empleados");
+                    return RedirectToAction("Index", "AccionesDePersonal");
                 }
                 else
                 {
-                    return View("Index", "Empleados");
+                    return View("Index", "AccionesDePersonal");
                 }
             }
             catch
@@ -1536,11 +1609,11 @@ namespace SISASEPBA.Controllers
 
                 if (dt.IsSuccess)
                 {
-                    return RedirectToAction("Index", "Empleados");
+                    return RedirectToAction("Index", "AccionesDePersonal");
                 }
                 else
                 {
-                    return View("Index", "Empleados");
+                    return View("Index", "AccionesDePersonal");
                 }
             }
             catch
@@ -1607,11 +1680,11 @@ namespace SISASEPBA.Controllers
 
                 if (dt.IsSuccess)
                 {
-                    return RedirectToAction("Index", "Empleados");
+                    return RedirectToAction("Index", "AccionesDePersonal");
                 }
                 else
                 {
-                    return View("Index", "Empleados");
+                    return View("Index", "AccionesDePersonal");
                 }
             }
             catch
@@ -1678,11 +1751,11 @@ namespace SISASEPBA.Controllers
 
                 if (dt.IsSuccess)
                 {
-                    return RedirectToAction("Index", "Empleados");
+                    return RedirectToAction("Index", "AccionesDePersonal");
                 }
                 else
                 {
-                    return View("Index", "Empleados");
+                    return View("Index", "AccionesDePersonal");
                 }
             }
             catch
@@ -1749,11 +1822,11 @@ namespace SISASEPBA.Controllers
 
                 if (dt.IsSuccess)
                 {
-                    return RedirectToAction("Index", "Empleados");
+                    return RedirectToAction("Index", "AccionesDePersonal");
                 }
                 else
                 {
-                    return View("Index", "Empleados");
+                    return View("Index", "AccionesDePersonal");
                 }
             }
             catch
@@ -1820,11 +1893,11 @@ namespace SISASEPBA.Controllers
 
                 if (dt.IsSuccess)
                 {
-                    return RedirectToAction("Index", "Empleados");
+                    return RedirectToAction("Index", "AccionesDePersonal");
                 }
                 else
                 {
-                    return View("Index", "Empleados");
+                    return View("Index", "AccionesDePersonal");
                 }
             }
             catch
@@ -1891,11 +1964,11 @@ namespace SISASEPBA.Controllers
 
                 if (dt.IsSuccess)
                 {
-                    return RedirectToAction("Index", "Empleados");
+                    return RedirectToAction("Index", "AccionesDePersonal");
                 }
                 else
                 {
-                    return View("Index", "Empleados");
+                    return View("Index", "AccionesDePersonal");
                 }
             }
             catch
@@ -1961,11 +2034,11 @@ namespace SISASEPBA.Controllers
 
                 if (dt.IsSuccess)
                 {
-                    return RedirectToAction("Index", "Empleados");
+                    return RedirectToAction("Index", "AccionesDePersonal");
                 }
                 else
                 {
-                    return View("Index", "Empleados");
+                    return View("Index", "AccionesDePersonal");
                 }
             }
             catch
@@ -2031,11 +2104,11 @@ namespace SISASEPBA.Controllers
 
                 if (dt.IsSuccess)
                 {
-                    return RedirectToAction("Index", "Empleados");
+                    return RedirectToAction("Index", "AccionesDePersonal");
                 }
                 else
                 {
-                    return View("Index", "Empleados");
+                    return View("Index", "AccionesDePersonal");
                 }
             }
             catch
@@ -2101,11 +2174,11 @@ namespace SISASEPBA.Controllers
 
                 if (dt.IsSuccess)
                 {
-                    return RedirectToAction("Index", "Empleados");
+                    return RedirectToAction("Index", "AccionesDePersonal");
                 }
                 else
                 {
-                    return View("Index", "Empleados");
+                    return View("Index", "AccionesDePersonal");
                 }
             }
             catch
@@ -2173,11 +2246,11 @@ namespace SISASEPBA.Controllers
 
                 if (dt.IsSuccess)
                 {
-                    return RedirectToAction("Index", "Empleados");
+                    return RedirectToAction("Index", "AccionesDePersonal");
                 }
                 else
                 {
-                    return View("Index", "Empleados");
+                    return View("Index", "AccionesDePersonal");
                 }
             }
             catch
@@ -2245,11 +2318,11 @@ namespace SISASEPBA.Controllers
 
                 if (dt.IsSuccess)
                 {
-                    return RedirectToAction("Index", "Empleados");
+                    return RedirectToAction("Index", "AccionesDePersonal");
                 }
                 else
                 {
-                    return View("Index", "Empleados");
+                    return View("Index", "AccionesDePersonal");
                 }
             }
             catch

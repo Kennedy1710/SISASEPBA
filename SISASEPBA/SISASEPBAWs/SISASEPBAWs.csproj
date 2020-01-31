@@ -62,6 +62,11 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\inputmask\bindings\inputmask.binding.js" />
+    <Content Include="Scripts\inputmask\inputmask.js" />
+    <Content Include="Scripts\inputmask\inputmask.min.js" />
+    <Content Include="Scripts\inputmask\jquery.inputmask.js" />
+    <Content Include="Scripts\inputmask\jquery.inputmask.min.js" />
     <Content Include="ServiceAsepba.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -80,6 +85,7 @@
     <Compile Include="CapaLogica\ClsEmpleadoConceptoLiquidacion.cs" />
     <Compile Include="CapaLogica\ClsEmpleadoConceptoNomina.cs" />
     <Compile Include="CapaLogica\ClsEmpleadoLicencia.cs" />
+    <Compile Include="CapaLogica\ClsGrupos.cs" />
     <Compile Include="CapaLogica\ClsNominas.cs" />
     <Compile Include="CapaLogica\ClsNominasHistorico.cs" />
     <Compile Include="CapaLogica\ClsOrdenCompra.cs" />
@@ -106,6 +112,7 @@
     <Compile Include="CapaObjetos\ObjEmpleadoConceptoNomina.cs" />
     <Compile Include="CapaObjetos\ObjEmpleadoConceptos.cs" />
     <Compile Include="CapaObjetos\ObjFormaPago.cs" />
+    <Compile Include="CapaObjetos\ObjGrupos.cs" />
     <Compile Include="CapaObjetos\ObjNomina.cs" />
     <Compile Include="CapaObjetos\ObjDepartamentos.cs" />
     <Compile Include="CapaObjetos\ObjEmpleadoLicencia.cs" />
@@ -130,6 +137,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

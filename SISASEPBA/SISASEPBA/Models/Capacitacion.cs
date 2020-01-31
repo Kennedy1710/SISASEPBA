@@ -12,7 +12,7 @@ namespace SISASEPBA.Models
 
         public string Accion { get; set; } = string.Empty;
 
-        public int IdCapacitacionEmpleado { get; set; } = 0;
+        public int IdCapacitacion { get; set; } = 0;
 
         [DisplayName("Tipo de Capacitación")]
         [Required(ErrorMessage = "¡Campo requerido!")]
@@ -20,13 +20,16 @@ namespace SISASEPBA.Models
 
         [DisplayName("Fecha de registro:")]
         [Required(ErrorMessage = "¡Campo requerido!")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime FechaRegistro { get; set; } = DateTime.Now;
 
         [DisplayName("Fecha de inicio:")]
         [Required(ErrorMessage = "¡Campo requerido!")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime FechaInicio { get; set; } = DateTime.Now;
 
         [DisplayName("Fecha de finalización:")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [Required(ErrorMessage = "¡Campo requerido!")]
         public DateTime FechaFinalizacion { get; set; } = DateTime.Now;
 

@@ -65,14 +65,14 @@ namespace SISASEPBA.Models
         public int NumeroIdentificacion { get; set; } = 0;
 
         [DisplayName("Ahorro en la asociación")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public decimal AhorroAsociacion { get; set; } = 0;
 
         [DisplayName("Teléfono principal")]
         [Required(ErrorMessage = "*Campo requerido.")]
         public string TelefonoPrincipal { get; set; } = string.Empty;
 
-        [DisplayName("Departamento")]
+        [DisplayName("Teléfono secundario:")]
         public string TelefonoSecundario { get; set; } = string.Empty;
 
         [DisplayName("Teléfono de emergencia")]

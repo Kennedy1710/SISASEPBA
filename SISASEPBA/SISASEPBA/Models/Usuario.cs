@@ -8,6 +8,8 @@ namespace SISASEPBA.Models
     {
         public string Accion { get; set; } = string.Empty;
 
+        public int IdUsuario { get; set; } = 0;
+
         [DisplayName("Código")]
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
         [Required(ErrorMessage = "*Campo requerido.")]
@@ -37,13 +39,13 @@ namespace SISASEPBA.Models
 
         [RegularExpression(@"^.{8,}$", ErrorMessage = "La contraseña debe contener mínimo 8 caracteres")]
         [DisplayName("Contraseña")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        //[Required(ErrorMessage = "*Campo requerido.")]
         [DataType(DataType.Password)]
         public string Contrasena { get; set; } = string.Empty;
 
         [RegularExpression(@"^.{8,}$", ErrorMessage = "La contraseña debe contener mínimo 8 caracteres")]
         [DisplayName("Confirmar Contraseña")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        //[Required(ErrorMessage = "*Campo requerido.")]
         [System.ComponentModel.DataAnnotations.Compare("Contrasena", ErrorMessage = "Las contraseñas no coinciden.")]
         [DataType(DataType.Password)]
         public string ConfirmarContrasena { get; set; } = string.Empty;
@@ -82,5 +84,6 @@ namespace SISASEPBA.Models
 
         [Display(AutoGenerateField = false)]
         public string UsuarioSesion { get; set; } = string.Empty;
+
     }
 }

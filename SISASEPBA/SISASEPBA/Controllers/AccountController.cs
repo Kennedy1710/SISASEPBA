@@ -85,6 +85,24 @@ namespace SISASEPBA.Controllers
             if (dt.IsSuccess)
             {
                 var claims = new List<Claim>();
+
+
+                var lista = (string)dt.Result;
+                foreach (var item in lista.Split(';'))
+                {
+                    //if (item.Contains(","))
+                    //{
+                        var dato = item.Split(',');
+                        var constante = dato[0];
+                        //var permiso = dato[1];
+                        //if (permiso == "1")
+                        //{
+                            claims.Add(new Claim(ClaimTypes.Role, item));
+                        //}
+                    //}
+                }
+
+
                 claims.AddRange(new List<Claim>
                 {
                     new Claim(ClaimTypes.NameIdentifier, model.Email.ToUpper()),
@@ -101,6 +119,7 @@ namespace SISASEPBA.Controllers
             else
             {
                 ModelState.AddModelError("", dt.Message);
+                ViewBag.Mensaje = "Usuario o Contraseña incorrectos, intente de nuevo.";
                 return View(model);
             }
 

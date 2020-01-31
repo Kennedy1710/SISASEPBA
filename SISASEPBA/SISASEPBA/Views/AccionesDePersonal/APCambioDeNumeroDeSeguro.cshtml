@@ -6,7 +6,7 @@
 
 <div class="panel panel-default">
     <div class="panel panel-heading">
-        <h3>Cambio de Número de Seguro</h3>
+        <strong>Cambio de Número de Seguro</strong>
     </div>
     <div class="panel panel-body">
 
@@ -19,48 +19,52 @@
 
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.NumeroAsegurado, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.NumeroAsegurado, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.NumeroAsegurado, "", new { @class = "text-danger" })
+                <div class="col-md-offset-3 col-md-10">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NumeroAsegurado, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.NumeroAsegurado, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.NumeroAsegurado, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FechaRige, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.FechaRige, new { htmlAttributes = new { @class = "datepicker form-control", @type = "date" } })
+                            @Html.ValidationMessageFor(model => model.FechaRige, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ObservacionesAP, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ObservacionesAP, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ObservacionesAP, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.HiddenFor(model => model.IdTipoAP, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.HiddenFor(model => model.IdEmpleado, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Ingresar" class="btn btn-success" />
+                            @Html.ActionLink("Cancelar", "Crear", "AccionesDePersonal", null, new { @class = "btn btn-danger" })
+                        </div>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.FechaRige, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.FechaRige, new { htmlAttributes = new { @class = "datepicker form-control", @type = "date" } })
-                        @Html.ValidationMessageFor(model => model.FechaRige, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.ObservacionesAP, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.ObservacionesAP, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.ObservacionesAP, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-10">
-                        @Html.HiddenFor(model => model.IdTipoAP, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-10">
-                        @Html.HiddenFor(model => model.IdEmpleado, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Guardar" class="btn btn-success" />
-                        @Html.ActionLink("Cancelar", "Index", "AccionesDePersonal", null, new { @class = "btn btn-danger" })
-                    </div>
-                </div>
+                
             </div>
         }
 

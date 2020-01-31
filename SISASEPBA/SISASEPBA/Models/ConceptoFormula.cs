@@ -15,6 +15,8 @@ namespace SISASEPBA.Models
 
         public int IdConcepto { get; set; } = 0;
 
+        public string Formula { get; set; } = string.Empty;
+
 
         [Required(ErrorMessage = "¡Campo requerido!")]
         public int Secuencia { get; set; } = 0;

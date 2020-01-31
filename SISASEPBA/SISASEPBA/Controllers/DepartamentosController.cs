@@ -43,31 +43,69 @@ namespace SISASEPBA.Controllers
             return View();
         }
 
+        public List<Models.Departamento> Alias(string alias)
+        {
+            try
+            {
+                var dt = _servicio.ConsultarDepartamentos(new Departamento
+                {
+                    Accion = "CA",
+                    Alias = alias,
+                    FechaCreacion = DateTime.Now,
+                    FechaModificacion = DateTime.Now
+                });
+
+                var list = dt.Tables[0].AsEnumerable().Select(dataRow => new Models.Departamento
+                {
+                    Alias = dataRow.Field<string>("ALIAS"),
+
+
+                }).ToList();
+
+                return list;
+            }
+            catch (Exception)
+            {
+                return new List<Models.Departamento>();
+            }
+        }
+
         // POST: Departamentos/Create
         [HttpPost]
         public ActionResult Create(Models.Departamento departamento)
         {
-            var objeto = new Departamento
-            {
-                Accion = "INSERTAR",
-                Alias = departamento.Alias,
-                Descripcion = departamento.Descripcion,
-                Estado = departamento.Estado,
-                UsuarioCreacion = User.Identity.Name,
-                FechaCreacion = DateTime.Now,
-                UsuarioModificacion = User.Identity.Name,
-                FechaModificacion = DateTime.Now
-            };
 
-            var dt = _servicio.ProcesarDepartamentos(objeto);
-
-            if (dt.IsSuccess)
+            if (Alias(departamento.Alias).Count() > 0)
             {
-                return RedirectToAction("Index");
+                ViewBag.Mensaje = "El alias del departamento ya existe";
+
+                return View("Create");
             }
             else
             {
-                return View("Create");
+
+                var objeto = new Departamento
+                {
+                    Accion = "INSERTAR",
+                    Alias = departamento.Alias,
+                    Descripcion = departamento.Descripcion,
+                    Estado = true,
+                    UsuarioCreacion = User.Identity.Name,
+                    FechaCreacion = DateTime.Now,
+                    UsuarioModificacion = User.Identity.Name,
+                    FechaModificacion = DateTime.Now
+                };
+
+                var dt = _servicio.ProcesarDepartamentos(objeto);
+
+                if (dt.IsSuccess)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View("Create");
+                }
             }
         }
 

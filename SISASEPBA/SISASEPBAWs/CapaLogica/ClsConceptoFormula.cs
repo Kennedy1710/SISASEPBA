@@ -44,6 +44,7 @@ namespace SISASEPBAWs.CapaLogica
                     comando.Parameters.AddWithValue("@@Accion", obj.Accion);
                     comando.Parameters.AddWithValue("@@IdConceptoFormula", obj.IdConceptoFormula);
                     comando.Parameters.AddWithValue("@@IdConcepto", obj.IdConcepto);
+                    comando.Parameters.AddWithValue("@@IdFormula", obj.Formula);
                     comando.Parameters.AddWithValue("@@Secuencia", obj.Secuencia);
                     comando.Parameters.AddWithValue("@@ValorInicial", obj.ValorInicial);
                     comando.Parameters.AddWithValue("@@ValorFinal", obj.ValorFinal);
@@ -113,6 +114,7 @@ namespace SISASEPBAWs.CapaLogica
                     comando.Parameters.AddWithValue("@@Accion", obj.Accion);
                     comando.Parameters.AddWithValue("@@IdConceptoFormula", obj.IdConceptoFormula);
                     comando.Parameters.AddWithValue("@@IdConcepto", obj.IdConcepto);
+                    comando.Parameters.AddWithValue("@@IdFormula", obj.Formula);
                     comando.Parameters.AddWithValue("@@Secuencia", obj.Secuencia);
                     comando.Parameters.AddWithValue("@@ValorInicial", obj.ValorInicial);
                     comando.Parameters.AddWithValue("@@ValorFinal", obj.ValorFinal);

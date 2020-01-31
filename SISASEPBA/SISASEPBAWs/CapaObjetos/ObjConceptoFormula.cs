@@ -10,7 +10,10 @@ namespace SISASEPBAWs.CapaObjetos
         public string Accion { get; set; } = string.Empty;
 
         public int IdConceptoFormula { get; set; } = 0;
+
         public int IdConcepto { get; set; } = 0;
+
+        public string Formula { get; set; } = string.Empty;
 
         public int Secuencia { get; set; } = 0;
 

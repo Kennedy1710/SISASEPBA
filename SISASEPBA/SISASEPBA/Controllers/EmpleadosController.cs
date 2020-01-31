@@ -48,14 +48,71 @@ namespace SISASEPBA.Controllers
         // GET: Empleados/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var dt = _servicio.ConsultarEmpleado(new Empleado
+            {
+                Accion = "CONSULTAR_EMPLEADO",
+                IdEmpleado = id,
+                FechaCreacion = DateTime.Now,
+                FechaModificacion = DateTime.Now,
+                FechaNacimiento = DateTime.Now,
+                FechaIngreso = DateTime.Now,
+                FechaSalida = DateTime.Now,
+                UltimoCambioVac = DateTime.Now
+            });
+
+            var usr = dt.Tables[0].AsEnumerable().Select(dataRow => new Models.Empleado
+            {
+                IdEmpleado = dataRow.Field<int>("IDEMPLEADO"),
+                IdNacionalidad = dataRow.Field<string>("NACIONALIDAD"),
+                IdDepartamento = dataRow.Field<string>("DEPARTAMENTO"),
+                IdPuesto = dataRow.Field<string>("PUESTO"),
+                IdNomina = dataRow.Field<string>("NOMINA"),
+                IdFormaPago = dataRow.Field<string>("FORMAPAGO"),
+                IdRegimenVacacional = dataRow.Field<string>("CONTROLVACACIONAL"),
+                CodigoEmpleado = dataRow.Field<string>("CODIGOEMPLEADO"),
+                PrimerNombre = dataRow.Field<string>("PRIMERNOMBRE"),
+                SegundoNombre = dataRow.Field<string>("SEGUNDONOMBRE"),
+                PrimerApellido = dataRow.Field<string>("PRIMERAPELLIDO"),
+                SegundoApellido = dataRow.Field<string>("SEGUNDOAPELLIDO"),
+                TipoIdentificacion = dataRow.Field<string>("TIPOIDENTIFICACION"),
+                NumeroIdentificacion = dataRow.Field<int>("NUMEROIDENTIFICACION"),
+                AhorroAsociacion = dataRow.Field<decimal>("AHORROASOCIACION"),
+                TelefonoPrincipal = dataRow.Field<string>("TELEFONOPRINCIPAL"),
+                TelefonoSecundario = dataRow.Field<string>("TELEFONOSECUNDARIO"),
+                TelefonoEmergencia = dataRow.Field<string>("TELEFONOEMERGENCIA"),
+                ContactoEmergencia = dataRow.Field<string>("CONTACTOEMERGENCIA"),
+                FechaNacimiento = dataRow.Field<DateTime>("FECHANACIMIENTO"),
+                FechaIngreso = dataRow.Field<DateTime>("FECHAINGRESO"),
+                FechaSalida = dataRow.Field<DateTime>("FECHASALIDA"),
+                TipoDeSangre = dataRow.Field<string>("TIPODESANGRE"),
+                DireccionDomicilio = dataRow.Field<string>("DIRECCIONDOMICILIO"),
+                Sexo = dataRow.Field<string>("SEXO"),
+                EstadoCivil = dataRow.Field<string>("ESTADOCIVIL"),
+                Estado = dataRow.Field<string>("ESTADO"),
+                SubEstado = dataRow.Field<string>("SUBESTADO"),
+                CorreoElectronico = dataRow.Field<string>("CORREOELECTRONICO"),
+                ConyugeDependiente = dataRow.Field<bool>("CONYUGEDEPENDIENTE"),
+                HijosDependientes = dataRow.Field<int>("HIJOSDEPENDIENTES"),
+                NumeroAsegurado = dataRow.Field<string>("NUMEROASEGURADO"),
+                VacacionesPendientes = dataRow.Field<int>("VACACIONESPENDIENTES"),
+                UltimoCambioVac = dataRow.Field<DateTime>("ULTIMOCAMBIOVAC"),
+                SalarioReferencia = dataRow.Field<decimal>("SALARIOREFERENCIA"),
+                Foto = dataRow.Field<byte[]>("FOTO"),
+                ObservacionesGenerales = dataRow.Field<string>("OBSERVACIONESGENERALES"),
+                UsuarioCreacion = dataRow.Field<string>("USUARIOCREACION"),
+                FechaCreacion = dataRow.Field<DateTime>("FECHACREACION")
+
+
+            }).FirstOrDefault();
+
+            return View(usr);
         }
 
         public List<Models.Departamento> Departamentos()
         {
             var dt = _servicio.ConsultarDepartamentos(new Departamento
             {
-                Accion = "CONSULTAR",
+                Accion = "CONSULTAR_ACTIVO",
                 FechaCreacion = DateTime.Now,
                 FechaModificacion = DateTime.Now
             });
@@ -98,7 +155,7 @@ namespace SISASEPBA.Controllers
         {
             var dt = _servicio.ConsultarPuestos(new Puesto
             {
-                Accion = "CONSULTAR",
+                Accion = "CONSULTAR_ACTIVO",
                 FechaCreacion = DateTime.Now,
                 FechaModificacion = DateTime.Now
             });
@@ -119,7 +176,7 @@ namespace SISASEPBA.Controllers
         {
             var dt = _servicio.ConsultarNomina(new Nomina
             {
-                Accion = "CONSULTAR",
+                Accion = "CONSULTAR_ACTIVOS",
                 FechaCreacion = DateTime.Now,
                 FechaModificacion = DateTime.Now
             });
@@ -140,7 +197,7 @@ namespace SISASEPBA.Controllers
         {
             var dt = _servicio.ConsultarControlVacacional(new ControlVacacional
             {
-                Accion = "CONSULTAR",
+                Accion = "CONSULTAR_ACTIVOS",
                 FechaCreacion = DateTime.Now,
                 FechaModificacion = DateTime.Now
             });
@@ -161,7 +218,7 @@ namespace SISASEPBA.Controllers
         {
             var dt = _servicio.ConsultarFormaPago(new FormaPago
             {
-                Accion = "CONSULTAR",
+                Accion = "CONSULTAR_ACTIVOS",
                 FechaCreacion = DateTime.Now,
                 FechaModificacion = DateTime.Now
             });

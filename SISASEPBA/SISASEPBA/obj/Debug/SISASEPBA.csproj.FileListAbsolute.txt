@@ -635,7 +635,7 @@ C:\Users\Kennedy\Source\Repos\SISASEPBA\SISASEPBA\SISASEPBA\bin\es\System.Web.Ra
 C:\Users\Kennedy\Source\Repos\SISASEPBA\SISASEPBA\SISASEPBA\bin\es\System.Web.WebPages.resources.dll
 C:\Users\Kennedy\Source\Repos\SISASEPBA\SISASEPBA\SISASEPBA\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\Kennedy\Source\Repos\SISASEPBA\SISASEPBA\SISASEPBA\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\Users\Kennedy\Source\Repos\SISASEPBA\SISASEPBA\SISASEPBA\obj\Debug\SISASEPBA.csprojAssemblyReference.cache
 C:\Users\Kennedy\Source\Repos\SISASEPBA\SISASEPBA\SISASEPBA\obj\Debug\SISASEPBA.csproj.CopyComplete
 C:\Users\Kennedy\Source\Repos\SISASEPBA\SISASEPBA\SISASEPBA\obj\Debug\SISASEPBA.dll
 C:\Users\Kennedy\Source\Repos\SISASEPBA\SISASEPBA\SISASEPBA\obj\Debug\SISASEPBA.pdb
+C:\Users\Kennedy\Source\Repos\SISASEPBA\SISASEPBA\SISASEPBA\obj\Debug\SISASEPBA.csprojAssemblyReference.cache

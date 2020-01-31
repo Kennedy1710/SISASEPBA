@@ -188,6 +188,7 @@
     <Compile Include="Controllers\EmpleadoLicenciasController.cs" />
     <Compile Include="Controllers\EmpleadosController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\GruposController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NominasController.cs" />
@@ -237,6 +238,7 @@
     <Compile Include="Models\EmpleadoConceptos.cs" />
     <Compile Include="Models\EmpleadoLicencia.cs" />
     <Compile Include="Models\FormaPago.cs" />
+    <Compile Include="Models\Grupos.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Nacionalidad.cs" />
@@ -581,6 +583,11 @@
     <Content Include="Scripts\i18n\vi.js" />
     <Content Include="Scripts\i18n\zh-CN.js" />
     <Content Include="Scripts\i18n\zh-TW.js" />
+    <Content Include="Scripts\inputmask\bindings\inputmask.binding.js" />
+    <Content Include="Scripts\inputmask\inputmask.js" />
+    <Content Include="Scripts\inputmask\inputmask.min.js" />
+    <Content Include="Scripts\inputmask\jquery.inputmask.js" />
+    <Content Include="Scripts\inputmask\jquery.inputmask.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -714,6 +721,13 @@
     <Content Include="Views\Privilegios\Index.cshtml" />
     <Content Include="Views\Privilegios\Create.cshtml" />
     <Content Include="Views\Privilegios\Edit.cshtml" />
+    <Content Include="Views\Grupos\Index.cshtml" />
+    <Content Include="Views\Grupos\Edit.cshtml" />
+    <Content Include="Views\Grupos\Create.cshtml" />
+    <Content Include="Views\Grupos\_TablaGrupoUsuario.cshtml" />
+    <Content Include="Views\Grupos\_TablaGrupoPrivilegio.cshtml" />
+    <Content Include="Views\EmpleadoLicencias\Edit.cshtml" />
+    <Content Include="Views\Empleados\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

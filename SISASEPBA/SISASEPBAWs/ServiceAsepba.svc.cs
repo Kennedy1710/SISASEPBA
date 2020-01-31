@@ -787,5 +787,34 @@ namespace SISASEPBAWs
             }
         }
 
+        [OperationBehavior(TransactionScopeRequired = true, TransactionAutoComplete = true)]
+        public Response ProcesarGrupo(Grupo obj)
+        {
+            try
+            {
+                return ClsGrupos.Procesar(obj);
+            }
+            catch (Exception e)
+            {
+                return new Response
+                {
+                    IsSuccess = false
+                };
+            }
+        }
+
+        [OperationBehavior(TransactionScopeRequired = true, TransactionAutoComplete = true)]
+        public DataSet ConsultarGrupo(Grupo obj)
+        {
+            try
+            {
+                return ClsGrupos.Consultar(obj);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
     }
 }

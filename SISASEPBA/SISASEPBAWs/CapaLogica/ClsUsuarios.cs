@@ -53,6 +53,7 @@ namespace SISASEPBAWs.CapaLogica
                     comando.Parameters.AddWithValue("@@Correo", obj.Correo);
                     comando.Parameters.AddWithValue("@@Estado", obj.Estado);
                     comando.Parameters.AddWithValue("@@UsuarioSistema", obj.UsuarioSesion);
+                    comando.Parameters.AddWithValue("@@IdUsuario", obj.IdUsuario);
 
 
                     var resultado = AccesoDatos.LlenarDataTable(comando, ref _mensaje);
@@ -120,6 +121,7 @@ namespace SISASEPBAWs.CapaLogica
                     comando.Parameters.AddWithValue("@@Correo", obj.Correo);
                     comando.Parameters.AddWithValue("@@Estado", obj.EsEmpleado);
                     comando.Parameters.AddWithValue("@@UsuarioSistema", obj.UsuarioSesion);
+                    comando.Parameters.AddWithValue("@@IdUsuario", obj.IdUsuario);
 
                     var resultado = AccesoDatos.LlenarDataTable(comando, ref _mensaje);
                     var ds = new DataSet();

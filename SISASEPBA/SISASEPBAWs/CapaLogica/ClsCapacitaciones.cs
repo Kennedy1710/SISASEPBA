@@ -44,7 +44,7 @@ namespace SISASEPBAWs.CapaLogica
                     comando.CommandText = SpConexion;
 
                     comando.Parameters.AddWithValue("@@Accion", obj.Accion);
-                    comando.Parameters.AddWithValue("@@IdCapacitacionEmpleado", obj.IdCapacitacionEmpleado);
+                    comando.Parameters.AddWithValue("@@IdCapacitacionEmpleado", obj.IdCapacitacion);
                     comando.Parameters.AddWithValue("@@IdTipoCapacitacion", obj.IdTipoCapacitacion);
                     comando.Parameters.AddWithValue("@@FechaRegistro", obj.FechaRegistro);
                     comando.Parameters.AddWithValue("@@FechaInicio", obj.FechaInicio);
@@ -120,7 +120,7 @@ namespace SISASEPBAWs.CapaLogica
                     comando.Connection = _conexion;
                     comando.CommandText = SpConexion;
                     comando.Parameters.AddWithValue("@@Accion", obj.Accion);
-                    comando.Parameters.AddWithValue("@@IdCapacitacionEmpleado", obj.IdCapacitacionEmpleado);
+                    comando.Parameters.AddWithValue("@@IdCapacitacionEmpleado", obj.IdCapacitacion);
                     comando.Parameters.AddWithValue("@@IdTipoCapacitacion", obj.IdTipoCapacitacion);
                     comando.Parameters.AddWithValue("@@FechaRegistro", obj.FechaRegistro);
                     comando.Parameters.AddWithValue("@@FechaInicio", obj.FechaInicio);

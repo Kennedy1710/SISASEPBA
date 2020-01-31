@@ -74,30 +74,30 @@ namespace SISASEPBA.Models
         public string EmpleadoSegundoApellido { set; get; } = string.Empty;
 
         [DisplayName("Tipo de identificación:")]
-        [StringLength(20, MinimumLength = 3, ErrorMessage = "Debe ingresar al menos 3 caracteres.")]
+        //[StringLength(20, MinimumLength = 3, ErrorMessage = "Debe ingresar al menos 3 caracteres.")]
         [Required(ErrorMessage = "¡Campo requerido!")]
         public string TipoIdentificacion { set; get; } = string.Empty;
 
         [DisplayName("Número de identificación:")]
         [Required(ErrorMessage = "¡Campo requerido!")]
-        [RegularExpression(@"([0-9]+)", ErrorMessage = "¡Debe ingresar un número!")]
+        //[RegularExpression(@"([0-9]+)", ErrorMessage = "¡Debe ingresar un número!")]
         public int NumeroIdentificacion { set; get; } = 0;
 
         [DisplayName("Teléfono principal:")]
-        [StringLength(8, MinimumLength = 8, ErrorMessage = "Número de dígitos incorrecto.")]
+        //[StringLength(8, MinimumLength = 8, ErrorMessage = "Número de dígitos incorrecto.")]
         [DataType(DataType.PhoneNumber)]
         //[RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Número de teléfono inválido.")]
         [Required(ErrorMessage = "¡Campo requerido!")]
         public string TelefonoPrincipal { set; get; } = string.Empty;
 
         [DisplayName("Teléfono secundario:")]
-        [StringLength(8, MinimumLength = 8, ErrorMessage = "Número de dígitos incorrecto.")]
+        //[StringLength(8, MinimumLength = 8, ErrorMessage = "Número de dígitos incorrecto.")]
         [DataType(DataType.PhoneNumber)]
         //[RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Número de teléfono inválido.")]
         public string TelefonoSecundario { set; get; } = string.Empty;
 
         [DisplayName("Teléfono de emergencia:")]
-        [StringLength(8, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
+        //[StringLength(8, MinimumLength = 3, ErrorMessage = "Excede el máximo de caracteres permitidos")]
         [DataType(DataType.PhoneNumber)]
         //[RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Número de teléfono inválido.")]
         [Required(ErrorMessage = "¡Campo requerido!")]
@@ -109,7 +109,7 @@ namespace SISASEPBA.Models
         public string ContactoEmergencia { set; get; } = string.Empty;
 
         [DisplayName("Tipo de sangre:")]
-        [StringLength(3, MinimumLength = 1, ErrorMessage = "Excede el máximo de caracteres permitidos")]
+        //[StringLength(3, MinimumLength = 1, ErrorMessage = "Excede el máximo de caracteres permitidos")]
         [Required(ErrorMessage = "¡Campo requerido!")]
         public string TipoSangre { set; get; } = string.Empty;
 
@@ -122,12 +122,12 @@ namespace SISASEPBA.Models
         [Required(ErrorMessage = "¡Campo requerido!")]
         public string DireccionDomicilio { set; get; } = string.Empty;
 
-        [StringLength(2, MinimumLength = 1, ErrorMessage = "Ejemplo de formato: M/F o MA/FE ")]
+        //[StringLength(2, MinimumLength = 1, ErrorMessage = "Ejemplo de formato: M/F o MA/FE ")]
         [DisplayName("Sexo:")]
         [Required(ErrorMessage = "¡Campo requerido!")]
         public string Sexo { set; get; } = string.Empty;
 
-        [StringLength(20, MinimumLength = 3, ErrorMessage = "Debe ingresar al menos 3 caracteres.")]
+        //[StringLength(20, MinimumLength = 3, ErrorMessage = "Debe ingresar al menos 3 caracteres.")]
         [DisplayName("Estado civil:")]
         [Required(ErrorMessage = "¡Campo requerido!")]
         public string EstadoCivil { get; set; } = string.Empty;
@@ -150,7 +150,7 @@ namespace SISASEPBA.Models
 
         [DisplayName("Hijos dependientes:")]
         [Required(ErrorMessage = "¡Campo requerido!")]
-        [RegularExpression(@"([0-9]+)", ErrorMessage = "¡Debe ingresar un número!")]
+        //[RegularExpression(@"([0-9]+)", ErrorMessage = "¡Debe ingresar un número!")]
         public int HijosDependientes { set; get; } = 0;
 
         [DisplayName("Número de asegurado:")]
@@ -163,6 +163,8 @@ namespace SISASEPBA.Models
         [RegularExpression(@"([0-9]+)", ErrorMessage = "¡Debe ingresar un número!")]
         public int SalarioReferencia { set; get; } = 0;
 
+        [DisplayName("Foto:")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public byte[] Foto { set; get; } = null;
 
         [StringLength(150, MinimumLength = 3, ErrorMessage = "Debe ingresar al menos 3 caracteres.")]

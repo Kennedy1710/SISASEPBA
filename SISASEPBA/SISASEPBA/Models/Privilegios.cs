@@ -18,5 +18,6 @@ namespace SISASEPBA.Models
         public string NombreConstante { get; set; } = string.Empty;
 
         public bool Estado { get; set; } = false;
+        public int IdGrupo { get; set; } = 0;
     }
 }

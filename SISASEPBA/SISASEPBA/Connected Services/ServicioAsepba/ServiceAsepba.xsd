@@ -10,6 +10,7 @@
   <xs:complexType name="Usuario">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="1" name="Accion" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IdUsuario" type="xs:int" />
       <xs:element minOccurs="0" maxOccurs="1" name="CodUsuario" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="Nombre" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="Empresa" type="xs:string" />
@@ -438,7 +439,7 @@
   <xs:complexType name="Capacitacion">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="1" name="Accion" type="xs:string" />
-      <xs:element minOccurs="1" maxOccurs="1" name="IdCapacitacionEmpleado" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IdCapacitacion" type="xs:int" />
       <xs:element minOccurs="1" maxOccurs="1" name="IdTipoCapacitacion" type="xs:int" />
       <xs:element minOccurs="1" maxOccurs="1" name="FechaRegistro" type="xs:dateTime" />
       <xs:element minOccurs="1" maxOccurs="1" name="FechaInicio" type="xs:dateTime" />
@@ -1465,6 +1466,52 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="1" name="ConsultarPrivilegioResult">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProcesarGrupo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="obj" type="tns:Grupo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="Grupo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Accion" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IdGrupo" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Alias" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Descripcion" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Estado" type="xs:boolean" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IdPrivilegio" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="usuario" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProcesarGrupoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ProcesarGrupoResult" type="tns:Response" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultarGrupo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="obj" type="tns:Grupo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultarGrupoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ConsultarGrupoResult">
           <xs:complexType>
             <xs:sequence>
               <xs:element ref="xs:schema" />

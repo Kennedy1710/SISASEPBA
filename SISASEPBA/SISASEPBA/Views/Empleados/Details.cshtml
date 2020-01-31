@@ -1,0 +1,328 @@
+﻿@model SISASEPBA.Models.Empleado
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<style>
+    .dl-horizontal dt {
+        width: 150px;
+        margin-left: 2rem;
+        border-bottom-style: groove;
+        border-bottom-width: medium;
+    }
+
+    .dl-horizontal dd {
+        margin-left: 20rem;
+        margin-bottom: 1.5rem;
+    }
+</style>
+
+<div class="panel panel-default">
+    <div class="panel panel-heading">
+        <strong>Detalle de empleado</strong>
+    </div>
+
+    <div class="panel panel-body">
+        <dl class="dl-horizontal col-md-6">
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IdNacionalidad)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IdNacionalidad)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IdDepartamento)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IdDepartamento)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IdPuesto)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IdPuesto)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IdNomina)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IdNomina)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IdFormaPago)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IdFormaPago)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IdRegimenVacacional)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IdRegimenVacacional)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CodigoEmpleado)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CodigoEmpleado)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PrimerNombre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PrimerNombre)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SegundoNombre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SegundoNombre)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PrimerApellido)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PrimerApellido)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SegundoApellido)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SegundoApellido)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TipoIdentificacion)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TipoIdentificacion)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NumeroIdentificacion)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NumeroIdentificacion)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AhorroAsociacion)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AhorroAsociacion)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TelefonoPrincipal)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TelefonoPrincipal)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TelefonoSecundario)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TelefonoSecundario)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TelefonoEmergencia)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TelefonoEmergencia)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ContactoEmergencia)
+            </dt>
+
+        </dl>
+
+        <dl class="dl-horizontal col-md-6">
+
+
+
+            <dd>
+                @Html.DisplayFor(model => model.ContactoEmergencia)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.FechaNacimiento)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FechaNacimiento)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FechaIngreso)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FechaIngreso)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TipoDeSangre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TipoDeSangre)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DireccionDomicilio)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DireccionDomicilio)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Sexo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Sexo)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EstadoCivil)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EstadoCivil)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Estado)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Estado)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SubEstado)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SubEstado)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CorreoElectronico)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CorreoElectronico)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ConyugeDependiente)
+            </dt>
+
+            <dd>
+                @{
+                    if (Model.ConyugeDependiente == true)
+                    {
+                        @Html.Label("Sí")
+                    }
+                    else
+                    {
+                        @Html.Label("No")
+                    }
+                }
+
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.HijosDependientes)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.HijosDependientes)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NumeroAsegurado)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NumeroAsegurado)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.VacacionesPendientes)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.VacacionesPendientes)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UltimoCambioVac)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UltimoCambioVac)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SalarioReferencia)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SalarioReferencia)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ObservacionesGenerales)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ObservacionesGenerales)
+            </dd>
+
+
+
+        </dl>
+
+        <div class="col-md-offset-4 col-md-10">
+            @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-success" })
+        </div>
+    </div>
+</div>
+

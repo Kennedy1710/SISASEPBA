@@ -42,7 +42,7 @@ namespace SISASEPBA.Controllers
 
         public List<Models.Departamento> GetDepartamentos() {
             var dt = _servicio.ConsultarDepartamentos(new Departamento { 
-                Accion="CONSULTAR",FechaCreacion=DateTime.Now,FechaModificacion=DateTime.Now });
+                Accion="CONSULTAR_ACTIVOS",FechaCreacion=DateTime.Now,FechaModificacion=DateTime.Now });
 
             var list = dt.Tables[0].AsEnumerable().Select(dataRow => new Models.Departamento
             {
@@ -55,6 +55,34 @@ namespace SISASEPBA.Controllers
 
             return list;
         }
+
+        public List<Models.Puesto> Alias(string alias)
+        {
+            try
+            {
+                var dt = _servicio.ConsultarPuestos(new Puesto
+                {
+                    Accion = "CA",
+                    Alias = alias,
+                    FechaCreacion = DateTime.Now,
+                    FechaModificacion = DateTime.Now
+                });
+
+                var list = dt.Tables[0].AsEnumerable().Select(dataRow => new Models.Puesto
+                {
+                    Alias = dataRow.Field<string>("ALIAS"),
+
+
+                }).ToList();
+
+                return list;
+            }
+            catch (Exception)
+            {
+                return new List<Models.Puesto>();
+            }
+        }
+
         // GET: Puestos/Create
         public ActionResult Create()
         {
@@ -67,35 +95,46 @@ namespace SISASEPBA.Controllers
         public ActionResult Create(Puesto puesto)
         {
 
-            try
+            if (Alias(puesto.Alias).Count() > 0)
             {
-                var objeto = new Puesto
-            {
-                Accion = "INSERTAR",
-                IdDepartamento = puesto.IdDepartamento,
-                Alias = puesto.Alias,
-                Descripcion = puesto.Descripcion,
-                Estado = puesto.Estado,
-                UsuarioCreacion = User.Identity.Name,
-                FechaCreacion = DateTime.Now,
-                UsuarioModificacion = User.Identity.Name,
-                FechaModificacion = DateTime.Now
-            };
+                ViewBag.ListaDepartamentos = GetDepartamentos();
+                ViewBag.Mensaje = "El alias del puesto ya existe";
 
-            var dt = _servicio.ProcesarPuestos(objeto);
-
-            if (dt.IsSuccess)
-            {
-                return RedirectToAction("Index");
+                return View("Create");
             }
             else
             {
-                return View("Create");
-            }
-            }
-            catch
-            {
-                return View();
+
+                try
+                {
+                    var objeto = new Puesto
+                    {
+                        Accion = "INSERTAR",
+                        IdDepartamento = puesto.IdDepartamento,
+                        Alias = puesto.Alias,
+                        Descripcion = puesto.Descripcion,
+                        Estado = true,
+                        UsuarioCreacion = User.Identity.Name,
+                        FechaCreacion = DateTime.Now,
+                        UsuarioModificacion = User.Identity.Name,
+                        FechaModificacion = DateTime.Now
+                    };
+
+                    var dt = _servicio.ProcesarPuestos(objeto);
+
+                    if (dt.IsSuccess)
+                    {
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        return View("Create");
+                    }
+                }
+                catch
+                {
+                    return View();
+                }
             }
         }
 

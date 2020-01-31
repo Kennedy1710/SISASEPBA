@@ -84,26 +84,33 @@ namespace SISASEPBA.Controllers
         // GET: Usuarios/Edit/5
         public ActionResult Edit(string id)
         {
-            var dt = _servicio.ConsultarUsuarios(new Usuario { Accion = "CU", CodUsuario = id, UsuarioSesion = User.Identity.Name });
-
-            var usr = dt.Tables[0].AsEnumerable().Select(dataRow => new Models.Usuario
+            try
             {
-                CodUsuario = dataRow.Field<string>("USUARIO"),
-                Nombre = dataRow.Field<string>("NOMBRE"),
-                Correo = dataRow.Field<string>("CORREOELECTRONICO"),
-                Empresa = dataRow.Field<string>("EMPRESA"),
-                Estado = dataRow.Field<string>("ESTADO"),
-                EsEmpleado = dataRow.Field<bool>("ES_EMPLEADO"),
-                Contrasena = dataRow.Field<string>("CONTRASEÑA"),
-                //con = dataRow.Field<string>("CONTRASEÑA"),
-                ContrasenaVence = dataRow.Field<bool>("CONTRASEÑAVENCE"),
-                CodEmpleado = dataRow.Field<string>("CODIGOEMPLEADO"),
-                DiasVencimiento = dataRow.Field<int>("DIASVENCIMIENTO"),
-                MaximoIntentos = dataRow.Field<int>("MAXIMOINTENTOS"),
-                CambioProximoInicio = dataRow.Field<bool>("CAMBIOPROXIMOINICIO")
-            }).FirstOrDefault();
+                var dt = _servicio.ConsultarUsuarios(new Usuario { Accion = "CU", CodUsuario = id, UsuarioSesion = User.Identity.Name });
 
-            return View(usr);
+                var usr = dt.Tables[0].AsEnumerable().Select(dataRow => new Models.Usuario
+                {
+                    CodUsuario = dataRow.Field<string>("USUARIO"),
+                    Nombre = dataRow.Field<string>("NOMBRE"),
+                    Correo = dataRow.Field<string>("CORREOELECTRONICO"),
+                    Empresa = dataRow.Field<string>("EMPRESA"),
+                    Estado = dataRow.Field<string>("ESTADO"),
+                    EsEmpleado = dataRow.Field<bool>("ES_EMPLEADO"),
+                    //Contrasena = dataRow.Field<string>("CONTRASEÑA"),
+                    //con = dataRow.Field<string>("CONTRASEÑA"),
+                    ContrasenaVence = dataRow.Field<bool>("CONTRASEÑAVENCE"),
+                    CodEmpleado = dataRow.Field<string>("CODIGOEMPLEADO"),
+                    DiasVencimiento = dataRow.Field<int>("DIASVENCIMIENTO"),
+                    MaximoIntentos = dataRow.Field<int>("MAXIMOINTENTOS"),
+                    CambioProximoInicio = dataRow.Field<bool>("CAMBIOPROXIMOINICIO")
+                }).FirstOrDefault();
+
+                return View(usr);
+            }
+            catch (Exception e)
+            {
+                return Redirect("Index");
+            }     
         }
 
         // POST: Usuarios/Edit/5

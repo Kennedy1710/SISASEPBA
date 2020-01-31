@@ -99,7 +99,7 @@ namespace SISASEPBA.Controllers
         // GET: EmpleadoLicencias/Create
         public ActionResult Create()
         {
-            ViewBag.ListaDepartamentos = GetTipoLicencias();
+            ViewBag.ListaTiposDeLicencia = GetTipoLicencias();
             ViewBag.Empleados = GetEmpleado();
             return View();
         }
@@ -143,11 +143,13 @@ namespace SISASEPBA.Controllers
         // GET: EmpleadoLicencias/Edit/5
         public ActionResult Edit(int id)
         {
-            ViewBag.TipoLicencia = GetTipoLicencias();
+            ViewBag.ListaTiposDeLicencia = GetTipoLicencias();
+            ViewBag.Empleados = GetEmpleado();
 
             var dt = _servicio.ConsultarEmpleadoLicencia(new EmpleadoLicencia
             {
-                Accion = "CONSULTAR_DEPARTAMENTO",
+                Accion = "CONSULTAR_EMPLEADOLICENCIA",
+                IdEmpleadoLicencia = id,
                 FechaVencimiento = DateTime.Now,
                 FechaCreacion = DateTime.Now,
                 FechaModificacion = DateTime.Now,
@@ -156,12 +158,14 @@ namespace SISASEPBA.Controllers
 
             var usr = dt.Tables[0].AsEnumerable().Select(dataRow => new Models.EmpleadoLicencia
             {
-                IdTipoLicencia = dataRow.Field<string>("IDTIPOLICENCIA"),
-                FechaVencimiento = dataRow.Field<DateTime>("FECHADEVENCIMIENTO"),
+                IdEmpleadoLicencia = dataRow.Field<int>("IDEMPLEADOLICENCIA"),
+                IdTipoLicencia = dataRow.Field<string>("TIPOLICENCIA"),
+                IdEmpleado = dataRow.Field<string>("EMPLEADO"),
+                FechaVencimiento = dataRow.Field<DateTime>("FECHAVENCIMIENTO"),
                 Estado = dataRow.Field<bool>("ESTADO"),
                 UsuarioCreacion = dataRow.Field<string>("USUARIOCREACION"),
                 FechaCreacion = dataRow.Field<DateTime>("FECHACREACION")
-                //    UsuarioModificacion = dataRow.Field<string>("USUARIOMODIFICACION"),
+                //UsuarioModificacion = dataRow.Field<string>("USUARIOMODIFICACION"),
                 //    FechaModificacion = dataRow.Field<DateTime>("FECHAMODIFICACION")
             }).FirstOrDefault();
 
@@ -170,24 +174,25 @@ namespace SISASEPBA.Controllers
 
         // POST: Departamentos/Edit/5
         [HttpPost]
-        public ActionResult Edit(Models.Departamento departamento)
+        public ActionResult Edit(Models.EmpleadoLicencia licencia)
         {
             try
             {
-                var objeto = new Departamento
+                var objeto = new EmpleadoLicencia
                 {
                     Accion = "ACTUALIZAR",
-                    IdDepartamento = departamento.IdDepartamento,
-                    Alias = departamento.Alias,
-                    Descripcion = departamento.Descripcion,
-                    Estado = departamento.Estado,
-                    UsuarioCreacion = departamento.UsuarioCreacion,
-                    FechaCreacion = departamento.FechaCreacion,
+                    IdEmpleadoLicencia = licencia.IdEmpleadoLicencia,
+                    IdTipoLicencia = Convert.ToInt32(licencia.IdTipoLicencia),
+                    IdEmpleado = Convert.ToInt32(licencia.IdEmpleado),
+                    FechaVencimiento = licencia.FechaVencimiento,
+                    Estado = licencia.Estado,
+                    UsuarioCreacion = licencia.UsuarioCreacion,
+                    FechaCreacion = licencia.FechaCreacion,
                     UsuarioModificacion = User.Identity.Name,
                     FechaModificacion = DateTime.Now
                 };
 
-                var dt = _servicio.ProcesarDepartamentos(objeto);
+                var dt = _servicio.ProcesarEmpleadoLicencia(objeto);
                 if (dt.IsSuccess)
                 {
                     return RedirectToAction("Index");

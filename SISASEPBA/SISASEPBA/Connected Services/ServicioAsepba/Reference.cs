@@ -379,6 +379,20 @@ namespace SISASEPBA.ServicioAsepba {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceAsepba/ConsultarPrivilegio", ReplyAction="http://tempuri.org/IServiceAsepba/ConsultarPrivilegioResponse")]
         System.Threading.Tasks.Task<System.Data.DataSet> ConsultarPrivilegioAsync(SISASEPBA.ServicioAsepba.Privilegio obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceAsepba/ProcesarGrupo", ReplyAction="http://tempuri.org/IServiceAsepba/ProcesarGrupoResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        SISASEPBA.ServicioAsepba.Response ProcesarGrupo(SISASEPBA.ServicioAsepba.Grupo obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceAsepba/ProcesarGrupo", ReplyAction="http://tempuri.org/IServiceAsepba/ProcesarGrupoResponse")]
+        System.Threading.Tasks.Task<SISASEPBA.ServicioAsepba.Response> ProcesarGrupoAsync(SISASEPBA.ServicioAsepba.Grupo obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceAsepba/ConsultarGrupo", ReplyAction="http://tempuri.org/IServiceAsepba/ConsultarGrupoResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet ConsultarGrupo(SISASEPBA.ServicioAsepba.Grupo obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceAsepba/ConsultarGrupo", ReplyAction="http://tempuri.org/IServiceAsepba/ConsultarGrupoResponse")]
+        System.Threading.Tasks.Task<System.Data.DataSet> ConsultarGrupoAsync(SISASEPBA.ServicioAsepba.Grupo obj);
     }
     
     /// <remarks/>
@@ -390,6 +404,8 @@ namespace SISASEPBA.ServicioAsepba {
     public partial class Usuario : object, System.ComponentModel.INotifyPropertyChanged {
         
         private string accionField;
+        
+        private int idUsuarioField;
         
         private string codUsuarioField;
         
@@ -431,6 +447,18 @@ namespace SISASEPBA.ServicioAsepba {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public int IdUsuario {
+            get {
+                return this.idUsuarioField;
+            }
+            set {
+                this.idUsuarioField = value;
+                this.RaisePropertyChanged("IdUsuario");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
         public string CodUsuario {
             get {
                 return this.codUsuarioField;
@@ -442,7 +470,7 @@ namespace SISASEPBA.ServicioAsepba {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
         public string Nombre {
             get {
                 return this.nombreField;
@@ -454,7 +482,7 @@ namespace SISASEPBA.ServicioAsepba {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
         public string Empresa {
             get {
                 return this.empresaField;
@@ -466,7 +494,7 @@ namespace SISASEPBA.ServicioAsepba {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
         public bool EsEmpleado {
             get {
                 return this.esEmpleadoField;
@@ -478,7 +506,7 @@ namespace SISASEPBA.ServicioAsepba {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
         public string CodEmpleado {
             get {
                 return this.codEmpleadoField;
@@ -490,7 +518,7 @@ namespace SISASEPBA.ServicioAsepba {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
         public string Contrasena {
             get {
                 return this.contrasenaField;
@@ -502,7 +530,7 @@ namespace SISASEPBA.ServicioAsepba {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
         public bool ContrasenaVence {
             get {
                 return this.contrasenaVenceField;
@@ -514,7 +542,7 @@ namespace SISASEPBA.ServicioAsepba {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=9)]
         public bool CambioProximoInicio {
             get {
                 return this.cambioProximoInicioField;
@@ -526,7 +554,7 @@ namespace SISASEPBA.ServicioAsepba {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=9)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=10)]
         public int DiasVencimiento {
             get {
                 return this.diasVencimientoField;
@@ -538,7 +566,7 @@ namespace SISASEPBA.ServicioAsepba {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=10)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=11)]
         public int MaximoIntentos {
             get {
                 return this.maximoIntentosField;
@@ -550,7 +578,7 @@ namespace SISASEPBA.ServicioAsepba {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=11)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=12)]
         public string Correo {
             get {
                 return this.correoField;
@@ -562,7 +590,7 @@ namespace SISASEPBA.ServicioAsepba {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=12)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=13)]
         public string Estado {
             get {
                 return this.estadoField;
@@ -574,7 +602,7 @@ namespace SISASEPBA.ServicioAsepba {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=13)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=14)]
         public string UsuarioSesion {
             get {
                 return this.usuarioSesionField;
@@ -582,6 +610,122 @@ namespace SISASEPBA.ServicioAsepba {
             set {
                 this.usuarioSesionField = value;
                 this.RaisePropertyChanged("UsuarioSesion");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Grupo : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string accionField;
+        
+        private int idGrupoField;
+        
+        private string aliasField;
+        
+        private string descripcionField;
+        
+        private bool estadoField;
+        
+        private int idPrivilegioField;
+        
+        private string usuarioField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string Accion {
+            get {
+                return this.accionField;
+            }
+            set {
+                this.accionField = value;
+                this.RaisePropertyChanged("Accion");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public int IdGrupo {
+            get {
+                return this.idGrupoField;
+            }
+            set {
+                this.idGrupoField = value;
+                this.RaisePropertyChanged("IdGrupo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string Alias {
+            get {
+                return this.aliasField;
+            }
+            set {
+                this.aliasField = value;
+                this.RaisePropertyChanged("Alias");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string Descripcion {
+            get {
+                return this.descripcionField;
+            }
+            set {
+                this.descripcionField = value;
+                this.RaisePropertyChanged("Descripcion");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public bool Estado {
+            get {
+                return this.estadoField;
+            }
+            set {
+                this.estadoField = value;
+                this.RaisePropertyChanged("Estado");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public int IdPrivilegio {
+            get {
+                return this.idPrivilegioField;
+            }
+            set {
+                this.idPrivilegioField = value;
+                this.RaisePropertyChanged("IdPrivilegio");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public string usuario {
+            get {
+                return this.usuarioField;
+            }
+            set {
+                this.usuarioField = value;
+                this.RaisePropertyChanged("usuario");
             }
         }
         
@@ -5297,7 +5441,7 @@ namespace SISASEPBA.ServicioAsepba {
         
         private string accionField;
         
-        private int idCapacitacionEmpleadoField;
+        private int idCapacitacionField;
         
         private int idTipoCapacitacionField;
         
@@ -5353,13 +5497,13 @@ namespace SISASEPBA.ServicioAsepba {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public int IdCapacitacionEmpleado {
+        public int IdCapacitacion {
             get {
-                return this.idCapacitacionEmpleadoField;
+                return this.idCapacitacionField;
             }
             set {
-                this.idCapacitacionEmpleadoField = value;
-                this.RaisePropertyChanged("IdCapacitacionEmpleado");
+                this.idCapacitacionField = value;
+                this.RaisePropertyChanged("IdCapacitacion");
             }
         }
         
@@ -7420,6 +7564,22 @@ namespace SISASEPBA.ServicioAsepba {
         
         public System.Threading.Tasks.Task<System.Data.DataSet> ConsultarPrivilegioAsync(SISASEPBA.ServicioAsepba.Privilegio obj) {
             return base.Channel.ConsultarPrivilegioAsync(obj);
+        }
+        
+        public SISASEPBA.ServicioAsepba.Response ProcesarGrupo(SISASEPBA.ServicioAsepba.Grupo obj) {
+            return base.Channel.ProcesarGrupo(obj);
+        }
+        
+        public System.Threading.Tasks.Task<SISASEPBA.ServicioAsepba.Response> ProcesarGrupoAsync(SISASEPBA.ServicioAsepba.Grupo obj) {
+            return base.Channel.ProcesarGrupoAsync(obj);
+        }
+        
+        public System.Data.DataSet ConsultarGrupo(SISASEPBA.ServicioAsepba.Grupo obj) {
+            return base.Channel.ConsultarGrupo(obj);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> ConsultarGrupoAsync(SISASEPBA.ServicioAsepba.Grupo obj) {
+            return base.Channel.ConsultarGrupoAsync(obj);
         }
     }
 }

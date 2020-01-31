@@ -14,17 +14,19 @@ namespace SISASEPBA.Models
 
         public int IdEmpleadoLicencia { get; set; } = 0;
 
-        [DisplayName("Código de empleado")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Código de empleado:")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string IdEmpleado { get; set; } = string.Empty;
 
-        [DisplayName("Tipo de licencia")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Tipo de licencia:")]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public string IdTipoLicencia { get; set; } = string.Empty;
 
 
-        [DisplayName("Fecha de vencimiento")]
-        [Required(ErrorMessage = "*Campo requerido.")]
+        [DisplayName("Fecha de vencimiento:")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "¡Campo requerido!")]
         public DateTime FechaVencimiento { get; set; } = DateTime.Now;
 
         public bool Estado { get; set; } = false;

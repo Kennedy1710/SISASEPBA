@@ -52,7 +52,7 @@ namespace SISASEPBA.Controllers
 
             var usr = dt.Tables[0].AsEnumerable().Select(dataRow => new Models.Capacitacion
             {
-                IdCapacitacionEmpleado = dataRow.Field<int>("IDCAPACITACIONEMPLEADO"),
+                IdCapacitacion = dataRow.Field<int>("IDCAPACITACION"),
                 IdTipoCapacitacion = dataRow.Field<string>("TIPOCAPACITACION"),
                 EmpresaCapacitadora = dataRow.Field<string>("EMPRESACAPACITADORA"),
                 NombreCapacitacion = dataRow.Field<string>("NOMBRECAPACITACION"),
@@ -145,7 +145,7 @@ namespace SISASEPBA.Controllers
             var dt = _servicio.ConsultarCapacitacion (new Capacitacion
             {
                 Accion = "CONSULTAR_CAPACITACION",
-                IdCapacitacionEmpleado = id,
+                IdCapacitacion = id,
                 FechaCreacion = DateTime.Now,
                 FechaModificacion = DateTime.Now,
                 FechaInicio = DateTime.Now,
@@ -155,7 +155,7 @@ namespace SISASEPBA.Controllers
 
             var usr = dt.Tables[0].AsEnumerable().Select(dataRow => new Models.Capacitacion
             {
-                IdCapacitacionEmpleado = dataRow.Field<int>("IDCAPACITACIONEMPLEADO"),
+                IdCapacitacion = dataRow.Field<int>("IDCAPACITACION"),
                 IdTipoCapacitacion = dataRow.Field<string>("TIPOCAPACITACION"),
                 FechaRegistro = dataRow.Field<DateTime>("FECHAREGISTRO"),
                 FechaInicio = dataRow.Field<DateTime>("FECHAINICIO"),
@@ -202,7 +202,7 @@ namespace SISASEPBA.Controllers
                 var objeto = new Capacitacion
                 {
                     Accion = "ACTUALIZAR",
-                    IdCapacitacionEmpleado = capacitacion.IdCapacitacionEmpleado,
+                    IdCapacitacion = capacitacion.IdCapacitacion,
                     IdTipoCapacitacion = capacitacion.IdTipoCapacitacion,
                     FechaRegistro = capacitacion.FechaRegistro,
                     FechaInicio = capacitacion.FechaInicio,

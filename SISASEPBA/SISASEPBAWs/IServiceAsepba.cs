@@ -232,6 +232,14 @@ namespace SISASEPBAWs
         [OperationContract]
         [TransactionFlow(TransactionFlowOption.Allowed)]
         DataSet ConsultarPrivilegio(Privilegio obj);
+
+        [OperationContract]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
+        Response ProcesarGrupo(Grupo obj);
+
+        [OperationContract]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
+        DataSet ConsultarGrupo(Grupo obj);
     }
 
 
@@ -273,6 +281,10 @@ namespace SISASEPBAWs
     {
         [DataMember]
         public string Accion { get; set; } = string.Empty;
+
+        [DataMember]
+        public int IdUsuario { get; set; } = 0;
+
         [DataMember]
         public string CodUsuario { get; set; } = string.Empty;
         [DataMember]
@@ -512,7 +524,7 @@ namespace SISASEPBAWs
         public string Accion { get; set; } = string.Empty;
 
         [DataMember]
-        public int IdCapacitacionEmpleado { get; set; } = 0;
+        public int IdCapacitacion { get; set; } = 0;
 
         [DataMember]
         public int IdTipoCapacitacion { get; set; } = 0;
@@ -1070,7 +1082,9 @@ namespace SISASEPBAWs
         public int IdConcepto { get; set; } = 0;
 
         [DataMember]
+        public string Formula { get; set; } = string.Empty;
 
+        [DataMember]
         public int Secuencia { get; set; } = 0;
 
         [DataMember]
@@ -1483,4 +1497,29 @@ namespace SISASEPBAWs
 
     }
 
-}
+    public class Grupo
+    {
+        [DataMember]
+        public string Accion { get; set; } = string.Empty;
+
+        [DataMember]
+        public int IdGrupo { get; set; } = 0;
+
+        [DataMember]
+        public string Alias { get; set; } = string.Empty;
+
+        [DataMember]
+        public string Descripcion { get; set; } = string.Empty;
+
+        [DataMember]
+        public bool Estado { get; set; } = false;
+
+        [DataMember]
+        public int IdPrivilegio { get; set; } = 0;
+
+        [DataMember]
+        public string usuario { get; set; } = string.Empty;
+
+    }
+
+    }

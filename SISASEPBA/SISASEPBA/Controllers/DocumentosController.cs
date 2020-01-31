@@ -14,6 +14,7 @@ namespace SISASEPBA.Controllers
         private readonly ServicioAsepba.ServiceAsepbaClient _servicio = new ServiceAsepbaClient();
 
         // GET: Documentos
+        [Authorize]
         public ActionResult Index()
         {
             var dt = _servicio.ConsultarDocumentos(new Documentos
@@ -29,7 +30,7 @@ namespace SISASEPBA.Controllers
             var usr = dt.Tables[0].AsEnumerable().Select(dataRow => new Models.Documentos
             {
                 IdDocumento = dataRow.Field<int>("IDDOCUMENTO"),
-                IdTipoDocumento = dataRow.Field<int>("IDTIPODOCUMENTO"),
+                IdTipoDocumento = dataRow.Field<string>("IDTIPODOCUMENTO"),
                 TituloDocumento = dataRow.Field<string>("TITULODOCUMENTO"),
                 Descripcion = dataRow.Field<string>("DESCRIPCION"),
                 Estado = dataRow.Field<string>("ESTADO"),
@@ -100,7 +101,7 @@ namespace SISASEPBA.Controllers
                     Descripcion = documentos.Descripcion,
                     FechaRige = documentos.FechaRige,
                     FechaVence = documentos.FechaVence,
-                    Estado = documentos.Estado,
+                    Estado = "A",
                     DocumentoAdjunto = documentos.DocumentoAdjunto,
                     IdRenovacion = documentos.IdRenovacion,
                     UsuarioCreacion = User.Identity.Name,
@@ -146,7 +147,7 @@ namespace SISASEPBA.Controllers
             var usr = dt.Tables[0].AsEnumerable().Select(dataRow => new Models.Documentos
             {
                 IdDocumento = dataRow.Field<int>("IDDOCUMENTO"),
-                IdTipoDocumento = dataRow.Field<int>("IDTIPODOCUMENTO"),
+                IdTipoDocumento = dataRow.Field<string>("IDTIPODOCUMENTO"),
                 TituloDocumento = dataRow.Field<string>("TITULODOCUMENTO"),
                 Descripcion = dataRow.Field<string>("DESCRIPCION"),
                 FechaRige = dataRow.Field<DateTime>("FECHARIGE"),

@@ -14,7 +14,7 @@ namespace SISASEPBA.Models
 
         [DisplayName("Tipo de Documento:")]
         [Required(ErrorMessage = "¡Campo requerido!")]
-        public int IdTipoDocumento { get; set; } = 0;
+        public string IdTipoDocumento { get; set; } = string.Empty;
 
         [DisplayName("Título del documento:")]
         [Required(ErrorMessage = "¡Campo requerido!")]
@@ -26,11 +26,13 @@ namespace SISASEPBA.Models
 
         [DisplayName("Fecha en la que rige:")]
         [Required(ErrorMessage = "¡Campo requerido!")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [DataType(DataType.Date)]
         public DateTime FechaRige { get; set; } = DateTime.Now;
 
         [DisplayName("Fecha en la que vence:")]
         [Required(ErrorMessage = "¡Campo requerido!")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [DataType(DataType.Date)]
         public DateTime FechaVence { get; set; } = DateTime.Now;
 

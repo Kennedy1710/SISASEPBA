@@ -317,6 +317,18 @@
   <wsdl:message name="IServiceAsepba_ConsultarPrivilegio_OutputMessage">
     <wsdl:part name="parameters" element="tns:ConsultarPrivilegioResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceAsepba_ProcesarGrupo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProcesarGrupo" />
+  </wsdl:message>
+  <wsdl:message name="IServiceAsepba_ProcesarGrupo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProcesarGrupoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceAsepba_ConsultarGrupo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarGrupo" />
+  </wsdl:message>
+  <wsdl:message name="IServiceAsepba_ConsultarGrupo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarGrupoResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServiceAsepba">
     <wsdl:operation name="ProcesarUsuarios">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceAsepba/ProcesarUsuarios" message="tns:IServiceAsepba_ProcesarUsuarios_InputMessage" />
@@ -525,6 +537,14 @@
     <wsdl:operation name="ConsultarPrivilegio">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceAsepba/ConsultarPrivilegio" message="tns:IServiceAsepba_ConsultarPrivilegio_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceAsepba/ConsultarPrivilegioResponse" message="tns:IServiceAsepba_ConsultarPrivilegio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcesarGrupo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceAsepba/ProcesarGrupo" message="tns:IServiceAsepba_ProcesarGrupo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceAsepba/ProcesarGrupoResponse" message="tns:IServiceAsepba_ProcesarGrupo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarGrupo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceAsepba/ConsultarGrupo" message="tns:IServiceAsepba_ConsultarGrupo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceAsepba/ConsultarGrupoResponse" message="tns:IServiceAsepba_ConsultarGrupo_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServiceAsepba" type="tns:IServiceAsepba">
@@ -990,6 +1010,24 @@
     </wsdl:operation>
     <wsdl:operation name="ConsultarPrivilegio">
       <soap:operation soapAction="http://tempuri.org/IServiceAsepba/ConsultarPrivilegio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcesarGrupo">
+      <soap:operation soapAction="http://tempuri.org/IServiceAsepba/ProcesarGrupo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarGrupo">
+      <soap:operation soapAction="http://tempuri.org/IServiceAsepba/ConsultarGrupo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
