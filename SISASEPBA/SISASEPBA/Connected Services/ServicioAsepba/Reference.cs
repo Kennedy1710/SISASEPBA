@@ -2641,6 +2641,8 @@ namespace SISASEPBA.ServicioAsepba {
         
         private int idConceptoField;
         
+        private string formulaField;
+        
         private int secuenciaField;
         
         private int valorInicialField;
@@ -2701,6 +2703,18 @@ namespace SISASEPBA.ServicioAsepba {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string Formula {
+            get {
+                return this.formulaField;
+            }
+            set {
+                this.formulaField = value;
+                this.RaisePropertyChanged("Formula");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
         public int Secuencia {
             get {
                 return this.secuenciaField;
@@ -2712,7 +2726,7 @@ namespace SISASEPBA.ServicioAsepba {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
         public int ValorInicial {
             get {
                 return this.valorInicialField;
@@ -2724,7 +2738,7 @@ namespace SISASEPBA.ServicioAsepba {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
         public int ValorFinal {
             get {
                 return this.valorFinalField;
@@ -2736,7 +2750,7 @@ namespace SISASEPBA.ServicioAsepba {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
         public int CantidadMonto {
             get {
                 return this.cantidadMontoField;
@@ -2748,7 +2762,7 @@ namespace SISASEPBA.ServicioAsepba {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
         public int NivelFormula {
             get {
                 return this.nivelFormulaField;
@@ -2760,7 +2774,7 @@ namespace SISASEPBA.ServicioAsepba {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=9)]
         public bool UsaCantidad {
             get {
                 return this.usaCantidadField;
@@ -2772,7 +2786,7 @@ namespace SISASEPBA.ServicioAsepba {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=9)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=10)]
         public bool UsaMonto {
             get {
                 return this.usaMontoField;
@@ -2784,7 +2798,7 @@ namespace SISASEPBA.ServicioAsepba {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=10)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=11)]
         public string UsuarioCreacion {
             get {
                 return this.usuarioCreacionField;
@@ -2796,7 +2810,7 @@ namespace SISASEPBA.ServicioAsepba {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=11)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=12)]
         public System.DateTime FechaCreacion {
             get {
                 return this.fechaCreacionField;
@@ -2808,7 +2822,7 @@ namespace SISASEPBA.ServicioAsepba {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=12)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=13)]
         public string UsuarioModificacion {
             get {
                 return this.usuarioModificacionField;
@@ -2820,7 +2834,7 @@ namespace SISASEPBA.ServicioAsepba {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=13)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=14)]
         public System.DateTime FechaModificacion {
             get {
                 return this.fechaModificacionField;

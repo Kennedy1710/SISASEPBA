@@ -89,7 +89,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
 
-                                    @*@if (Context.User.IsInRole("SIST_PROC_AP"))
+                                    @if (Context.User.IsInRole("SIST_PROC_AP"))
                                         {
                                             <li>@Html.ActionLink("Acciones de Personal", "Index", "AccionesDePersonal")</li>
                                         }
@@ -132,34 +132,9 @@
                                         @if (Context.User.IsInRole("SIST_PROC_HISTORICOS"))
                                         {
                                             <li>@Html.ActionLink("Historicos de nomina", "Index", "NominasHistorico")</li>
-                                        }*@
+                                        }
 
 
-                                    <li>@Html.ActionLink("Acciones de Personal", "Index", "AccionesDePersonal")</li>
-
-
-
-                                    <li>@Html.ActionLink("Nominas", "Index", "Nominas")</li>
-
-
-
-                                    <li>@Html.ActionLink("Conceptos", "Index", "Conceptos")</li>
-
-
-
-                                    <li>@Html.ActionLink("Conceptos por nómina de empleados ", "Index", "EmpleadoConceptoNomina")</li>
-
-
-                                    <li>@Html.ActionLink("Conceptos de empleados ", "Index", "EmpleadoConcepto")</li>
-
-
-                                    <li>@Html.ActionLink("EmpleadoConceptoLiquidacion", "Index", "EmpleadoConceptoLiquidacion")</li>
-
-                                    <li>@Html.ActionLink("Concepto Liquidacion", "IndexConceptoLiquidacion", "Conceptos")</li>
-
-                                    <li>@Html.ActionLink("Concepto Formula", "IndexConceptoFormula", "Conceptos")</li>
-
-                                    <li>@Html.ActionLink("Historicos de nomina", "Index", "NominasHistorico")</li>
 
 
                                 </ul>

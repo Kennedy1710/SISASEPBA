@@ -937,6 +937,7 @@
       <xs:element minOccurs="0" maxOccurs="1" name="Accion" type="xs:string" />
       <xs:element minOccurs="1" maxOccurs="1" name="IdConceptoFormula" type="xs:int" />
       <xs:element minOccurs="1" maxOccurs="1" name="IdConcepto" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Formula" type="xs:string" />
       <xs:element minOccurs="1" maxOccurs="1" name="Secuencia" type="xs:int" />
       <xs:element minOccurs="1" maxOccurs="1" name="ValorInicial" type="xs:int" />
       <xs:element minOccurs="1" maxOccurs="1" name="ValorFinal" type="xs:int" />
